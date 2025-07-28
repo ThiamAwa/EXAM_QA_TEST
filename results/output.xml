@@ -1,0 +1,606 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.1 on win32)" generated="2025-07-28T18:10:33.892360" rpa="false" schemaversion="5">
+<suite id="s1" name="Testcases" source="C:\Selenium\Eamen_Test_QA\label1\testcases\testcases.robot">
+<test id="s1-t1" name="✅ Création Utilisateur - Scénario Valide" line="9">
+<kw name="Comment" owner="BuiltIn">
+<arg>Ce test crée un utilisateur valide et vérifie l’ID généré</arg>
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<status status="PASS" start="2025-07-28T18:10:34.858906" elapsed="0.000195"/>
+</kw>
+<kw name="Create User" owner="ressource">
+<kw name="Setup API Session" owner="ressource">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Get Session">
+<msg time="2025-07-28T18:10:34.862033" level="FAIL">No keyword with name 'Get Session' found. Did you mean:
+    RequestsLibrary.GET On Session</msg>
+<arg>${alias}</arg>
+<status status="FAIL" start="2025-07-28T18:10:34.861984" elapsed="0.000146">No keyword with name 'Get Session' found. Did you mean:
+    RequestsLibrary.GET On Session</status>
+</kw>
+<msg time="2025-07-28T18:10:34.862285" level="INFO">${status} = False</msg>
+<var>${status}</var>
+<arg>Get Session</arg>
+<arg>${alias}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-07-28T18:10:34.860693" elapsed="0.001630"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-07-28T18:10:34.863109" level="INFO">Creating Session using : alias=api, url=https://fakestoreapi.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${alias}</arg>
+<arg>${BASE_URL}</arg>
+<arg>verify=False</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-07-28T18:10:34.862827" elapsed="0.000532"/>
+</kw>
+<arg>not ${status}</arg>
+<arg>Create Session</arg>
+<arg>${alias}</arg>
+<arg>${BASE_URL}</arg>
+<arg>verify=False</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-07-28T18:10:34.862492" elapsed="0.000951"/>
+</kw>
+<status status="PASS" start="2025-07-28T18:10:34.860313" elapsed="0.003242"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-07-28T18:10:35.319773" level="INFO">POST Request : url=https://fakestoreapi.com/users 
+ path_url=/users 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '287', 'Content-Type': 'application/json'} 
+ body=b'{"email": "john@gmail.com", "username": "johnd", "password": "123456", "name": {"firstname": "John", "lastname": "Doe"}, "address": {"city": "kilcoole", "street": "7835 new road", "zipcode": "12926-3874", "geolocation": {"lat": "-37.3159", "long": "81.1496"}}, "phone": "1-570-236-7033"}' 
+ </msg>
+<msg time="2025-07-28T18:10:35.319935" level="INFO">POST Response : url=https://fakestoreapi.com/users 
+ status=200, reason=OK 
+ headers={'Date': 'Mon, 28 Jul 2025 18:10:37 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"8-h5EdGu1QmHe4OkjsU292jNzSLfE"', 'X-Powered-By': 'Express', 'Cf-Cache-Status': 'DYNAMIC', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=wXGvcxB%2FRz9y9r8ZGUQ0L%2BhKZn6JkdxxDvN9nB7txtwjGbEoFYoVlzc9bbi4JOztTlhM8kHtnM%2BjXCzYhHgc77ztf5vcP5YcmeskSKQJ%2Fa6WhJq7l6T5hs%2FgbQc%3D"}]}', 'Content-Encoding': 'gzip', 'Server': 'cloudflare', 'CF-RAY': '966655942de1d145-CDG', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={"id":1} 
+ </msg>
+<msg time="2025-07-28T18:10:35.320030" level="INFO">C:\Users\Utilisateur\AppData\Roaming\Python\Python313\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakestoreapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-07-28T18:10:35.320722" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>/users</arg>
+<arg>json=${user_data}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-07-28T18:10:34.863680" elapsed="0.457122"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2025-07-28T18:10:35.320971" elapsed="0.000115"/>
+</return>
+<msg time="2025-07-28T18:10:35.321369" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${VALID_USER}</arg>
+<status status="PASS" start="2025-07-28T18:10:34.859776" elapsed="0.461632"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Status code : ${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-07-28T18:10:35.321903" elapsed="0.000969"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T18:10:35.323950" level="INFO">${json} = {'id': 1}</msg>
+<var>${json}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T18:10:35.323255" elapsed="0.000748"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Réponse JSON : ${json}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-07-28T18:10:35.324415" elapsed="0.000518"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-07-28T18:10:35.325916" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-07-28T18:10:35.325311" elapsed="0.000698"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${json}</arg>
+<arg>id</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2025-07-28T18:10:35.326475" elapsed="0.000243"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-07-28T18:10:35.328446" level="INFO">${USER_ID} = 1</msg>
+<arg>${USER_ID}</arg>
+<arg>${json["id"]}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-07-28T18:10:35.327163" elapsed="0.001352"/>
+</kw>
+<status status="PASS" start="2025-07-28T18:10:34.857160" elapsed="0.471802"/>
+</test>
+<test id="s1-t2" name="Création Utilisateur - Email Vide" line="20">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-07-28T18:10:35.530288" level="INFO">POST Request : url=https://fakestoreapi.com/users 
+ path_url=/users 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '56', 'Content-Type': 'application/json'} 
+ body=b'{"email": "", "username": "johnd", "password": "123456"}' 
+ </msg>
+<msg time="2025-07-28T18:10:35.530412" level="INFO">POST Response : url=https://fakestoreapi.com/users 
+ status=200, reason=OK 
+ headers={'Date': 'Mon, 28 Jul 2025 18:10:37 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"9-hVv0cNJophUD7CGn+ZqXp8tVGo0"', 'X-Powered-By': 'Express', 'Cf-Cache-Status': 'DYNAMIC', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=Y92nbupAqRp67YIUQh5wZh9UlBDIsfEAxksuFHa6S3cmTMS2DpHupvVlDNo6izkd3R0gEnSskGphgO5P4bWnqUYyebnAqC6R2y17qOKDknEX9ystc4Lca1vuBeo%3D"}]}', 'Content-Encoding': 'gzip', 'Server': 'cloudflare', 'CF-RAY': '96665595d8c5d145-CDG', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={"id":11} 
+ </msg>
+<msg time="2025-07-28T18:10:35.530704" level="INFO">C:\Users\Utilisateur\AppData\Roaming\Python\Python313\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakestoreapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-07-28T18:10:35.531535" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>/users</arg>
+<arg>json=${INVALID_USER_1}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-07-28T18:10:35.332300" elapsed="0.199331"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Statut HTTP : ${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-07-28T18:10:35.532162" elapsed="0.000955"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-07-28T18:10:35.534115" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-07-28T18:10:35.533518" elapsed="0.000688"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>⚠️ L’API accepte un utilisateur avec email vide — cela montre un manque de validation côté backend.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-07-28T18:10:35.534660" elapsed="0.000478"/>
+</kw>
+<doc>Teste la création d’un utilisateur avec email vide.</doc>
+<status status="PASS" start="2025-07-28T18:10:35.331236" elapsed="0.204252"/>
+</test>
+<test id="s1-t3" name="Création Utilisateur - Username Vide" line="27">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-07-28T18:10:35.737519" level="INFO">POST Request : url=https://fakestoreapi.com/users 
+ path_url=/users 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '65', 'Content-Type': 'application/json'} 
+ body=b'{"email": "john@gmail.com", "username": "", "password": "123456"}' 
+ </msg>
+<msg time="2025-07-28T18:10:35.737633" level="INFO">POST Response : url=https://fakestoreapi.com/users 
+ status=200, reason=OK 
+ headers={'Date': 'Mon, 28 Jul 2025 18:10:37 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"9-hVv0cNJophUD7CGn+ZqXp8tVGo0"', 'X-Powered-By': 'Express', 'Cf-Cache-Status': 'DYNAMIC', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=y6njfGIRHnveu%2BsfLh0NQUWluZcvFOpfMguid1B8hB1saCTLaMM3%2BUC8Q2hbMAG51M8z4lGh3AaVNqu1JNe2%2FBTzg0fqOYJEI1s2GcMDKnhVflKYa4nDk7qPo%2FQ%3D"}]}', 'Content-Encoding': 'gzip', 'Server': 'cloudflare', 'CF-RAY': '966655972bb2d145-CDG', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={"id":11} 
+ </msg>
+<msg time="2025-07-28T18:10:35.737761" level="INFO">C:\Users\Utilisateur\AppData\Roaming\Python\Python313\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakestoreapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-07-28T18:10:35.738524" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>/users</arg>
+<arg>json=${INVALID_USER_2}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-07-28T18:10:35.538371" elapsed="0.200235"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>⚠️ Statut retourné : ${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-07-28T18:10:35.739048" elapsed="0.000948"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-07-28T18:10:35.740964" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-07-28T18:10:35.740382" elapsed="0.000665"/>
+</kw>
+<doc>Teste la création d’un utilisateur avec un champ username vide. L’API ne devrait pas accepter cette requête.</doc>
+<status status="PASS" start="2025-07-28T18:10:35.536759" elapsed="0.204747"/>
+</test>
+<test id="s1-t4" name="Lecture Utilisateur - Valide" line="33">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-07-28T18:10:35.940606" level="INFO">GET Request : url=https://fakestoreapi.com/users/1 
+ path_url=/users/1 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-07-28T18:10:35.940725" level="INFO">GET Response : url=https://fakestoreapi.com/users/1 
+ status=200, reason=OK 
+ headers={'Date': 'Mon, 28 Jul 2025 18:10:37 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"120-HNMhv14aQeBJetA9fBvavCZ+gdk"', 'X-Powered-By': 'Express', 'Cf-Cache-Status': 'DYNAMIC', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=%2BqfXQTN9vJbbMA7kL5BUspAueR5468lFSUCHJ67muNzl7SSS%2FCL4yxsR6sxzK5%2BCJ3xy3II1KsYb3X9iEVFtdSK9Q9MaNalC2fXyx8qOUeZa9l9XYAao4kodHKQ%3D"}]}', 'Content-Encoding': 'gzip', 'Server': 'cloudflare', 'CF-RAY': '966655986e3bd145-CDG', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={"address":{"geolocation":{"lat":"-37.3159","long":"81.1496"},"city":"kilcoole","street":"new road","number":7682,"zipcode":"12926-3874"},"id":1,"email":"john@gmail.com","username":"johnd","password":"m38rmF$","name":{"firstname":"john","lastname":"doe"},"phone":"1-570-236-7033","__v":0} 
+ </msg>
+<msg time="2025-07-28T18:10:35.940811" level="INFO">C:\Users\Utilisateur\AppData\Roaming\Python\Python313\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakestoreapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-07-28T18:10:35.941697" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>/users/${USER_ID}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-07-28T18:10:35.743998" elapsed="0.197797"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Lecture Utilisateur - Status : ${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-07-28T18:10:35.942339" elapsed="0.000877"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-07-28T18:10:35.944227" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-07-28T18:10:35.943635" elapsed="0.000677"/>
+</kw>
+<status status="PASS" start="2025-07-28T18:10:35.742973" elapsed="0.201789"/>
+</test>
+<test id="s1-t5" name="❌ Lecture Utilisateur - ID Inexistant" line="43">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-07-28T18:10:36.140494" level="INFO">GET Request : url=https://fakestoreapi.com/users/99999 
+ path_url=/users/99999 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-07-28T18:10:36.140744" level="INFO">GET Response : url=https://fakestoreapi.com/users/99999 
+ status=200, reason=OK 
+ headers={'Date': 'Mon, 28 Jul 2025 18:10:37 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"4-K+iMpCQsduglOsYkdIUQZQMtaDM"', 'X-Powered-By': 'Express', 'Cf-Cache-Status': 'DYNAMIC', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=irxsp2eGyetwH73w2Ltm%2FL8U%2BIffQNOLtplFKp2Rm3epxpuqQxlNzGh8NNXEcuyl%2F0BVaHBnHrphSH3eUR3LpeXC%2FCGpyEn1h41yaBROh7V5%2ByAYbu7WBasOWSg%3D"}]}', 'Content-Encoding': 'gzip', 'Server': 'cloudflare', 'CF-RAY': '96665599a8b0d145-CDG', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body=null 
+ </msg>
+<msg time="2025-07-28T18:10:36.140834" level="INFO">C:\Users\Utilisateur\AppData\Roaming\Python\Python313\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakestoreapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-07-28T18:10:36.141648" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>/users/99999</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-07-28T18:10:35.947172" elapsed="0.194538"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-07-28T18:10:36.142696" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-07-28T18:10:36.142083" elapsed="0.000700"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T18:10:36.143798" level="INFO">${json} = None</msg>
+<var>${json}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T18:10:36.143168" elapsed="0.000670"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Réponse vide (None) pour utilisateur inexistant</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-07-28T18:10:36.144614" elapsed="0.000445"/>
+</kw>
+<arg>'${json}' == 'None'</arg>
+<arg>Log To Console</arg>
+<arg>Réponse vide (None) pour utilisateur inexistant</arg>
+<arg>ELSE</arg>
+<arg>Length Should Be</arg>
+<arg>${json}</arg>
+<arg>0</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-07-28T18:10:36.144283" elapsed="0.000908"/>
+</kw>
+<status status="PASS" start="2025-07-28T18:10:35.946147" elapsed="0.199374"/>
+</test>
+<test id="s1-t6" name="❌ Lecture Utilisateur - ID Texte" line="50">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-07-28T18:10:36.245133" level="INFO">GET Request : url=https://fakestoreapi.com/users/abc 
+ path_url=/users/abc 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-07-28T18:10:36.245249" level="INFO">GET Response : url=https://fakestoreapi.com/users/abc 
+ status=400, reason=Bad Request 
+ headers={'Date': 'Mon, 28 Jul 2025 18:10:37 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '57', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"39-c+fGpiiXQH9CfiwB4wJOltECia0"', 'X-Powered-By': 'Express', 'Cf-Cache-Status': 'DYNAMIC', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=jiik5biBeuSNjD1l31CgwefnNkF16BKUAbUfYQJEOG%2F2ScFLUQOBj7nTMIPXTouYBpw7uJjr53JkhDrxDKdxCqACPGJQItnirw5g2WgtaZesQ5s8NyFKYgKzLD4%3D"}]}', 'Server': 'cloudflare', 'CF-RAY': '9666559aeaf1d145-CDG', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={"status":"error","message":"user id should be provided"} 
+ </msg>
+<msg time="2025-07-28T18:10:36.245334" level="INFO">C:\Users\Utilisateur\AppData\Roaming\Python\Python313\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakestoreapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-07-28T18:10:36.246123" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>/users/abc</arg>
+<arg>expected_status=ANY</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-07-28T18:10:36.147825" elapsed="0.098382"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-07-28T18:10:36.247309" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>400</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-07-28T18:10:36.246684" elapsed="0.000711"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T18:10:36.248500" level="INFO">${body} = {"status":"error","message":"user id should be provided"}</msg>
+<var>${body}</var>
+<arg>${response.text}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T18:10:36.247854" elapsed="0.000688"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Réponse erreur : ${body}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-07-28T18:10:36.248982" elapsed="0.000512"/>
+</kw>
+<status status="PASS" start="2025-07-28T18:10:36.146729" elapsed="0.103142"/>
+</test>
+<test id="s1-t7" name="✅ Mise à Jour Utilisateur - Scénario Valide" line="59">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-07-28T18:10:36.252857" level="INFO">${updated_user} = {'email': 'jane@doe.com', 'username': 'janedoe', 'password': '5678'}</msg>
+<var>${updated_user}</var>
+<arg>email=jane@doe.com</arg>
+<arg>username=janedoe</arg>
+<arg>password=5678</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-07-28T18:10:36.252306" elapsed="0.000618"/>
+</kw>
+<kw name="PUT On Session" owner="RequestsLibrary">
+<msg time="2025-07-28T18:10:36.350571" level="INFO">PUT Request : url=https://fakestoreapi.com/users/1 
+ path_url=/users/1 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '68', 'Content-Type': 'application/json'} 
+ body=b'{"email": "jane@doe.com", "username": "janedoe", "password": "5678"}' 
+ </msg>
+<msg time="2025-07-28T18:10:36.350696" level="INFO">PUT Response : url=https://fakestoreapi.com/users/1 
+ status=200, reason=OK 
+ headers={'Date': 'Mon, 28 Jul 2025 18:10:38 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"3f-jDiuPjmWuHX1ggIGHAYUpMDtL84"', 'X-Powered-By': 'Express', 'Cf-Cache-Status': 'DYNAMIC', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=fi76%2B7TCxe2J6y75I6mN0rbyatc%2Fflnu2nW4HP%2B%2BY6DThjuUqdiXIh5KRc5jW4c9gSo3zny14%2Byri%2FTgMMwQ9N8r%2FYZQpg0EkL7T1US1xo7XO2HG1LioZxDaup8%3D"}]}', 'Content-Encoding': 'gzip', 'Server': 'cloudflare', 'CF-RAY': '9666559b9c08d145-CDG', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={"email":"jane@doe.com","username":"janedoe","password":"5678"} 
+ </msg>
+<msg time="2025-07-28T18:10:36.350845" level="INFO">C:\Users\Utilisateur\AppData\Roaming\Python\Python313\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakestoreapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-07-28T18:10:36.351645" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>/users/${USER_ID}</arg>
+<arg>json=${updated_user}</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-07-28T18:10:36.253423" elapsed="0.098296"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-07-28T18:10:36.352812" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-07-28T18:10:36.352199" elapsed="0.000707"/>
+</kw>
+<status status="PASS" start="2025-07-28T18:10:36.251176" elapsed="0.102126"/>
+</test>
+<test id="s1-t8" name="❌ Mise à Jour - ID Inexistant" line="64">
+<kw name="PUT On Session" owner="RequestsLibrary">
+<msg time="2025-07-28T18:10:36.451614" level="INFO">PUT Request : url=https://fakestoreapi.com/users/99999 
+ path_url=/users/99999 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '287', 'Content-Type': 'application/json'} 
+ body=b'{"email": "john@gmail.com", "username": "johnd", "password": "123456", "name": {"firstname": "John", "lastname": "Doe"}, "address": {"city": "kilcoole", "street": "7835 new road", "zipcode": "12926-3874", "geolocation": {"lat": "-37.3159", "long": "81.1496"}}, "phone": "1-570-236-7033"}' 
+ </msg>
+<msg time="2025-07-28T18:10:36.451779" level="INFO">PUT Response : url=https://fakestoreapi.com/users/99999 
+ status=200, reason=OK 
+ headers={'Date': 'Mon, 28 Jul 2025 18:10:38 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"107-zBU6tm0S69+bgrBIzdo7TgAGpOY"', 'X-Powered-By': 'Express', 'Cf-Cache-Status': 'DYNAMIC', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=T0ow9hamfxcIPYnE16gQt5ca%2FzgE732vREhp1zhixOgsnYs%2FALUMYUAVL6aDm7%2B2ewtMvCGgqrPPPdGQjFqMTNcMkuliKHDYInyLK9Jtdp%2FWtl4DGIj1sQab19w%3D"}]}', 'Content-Encoding': 'gzip', 'Server': 'cloudflare', 'CF-RAY': '9666559c3d36d145-CDG', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={"email":"john@gmail.com","username":"johnd","password":"123456","name":{"firstname":"John","lastname":"Doe"},"address":{"city":"kilcoole","street":"7835 new road","zipcode":"12926-3874","geolocation":{"lat":"-37.3159","long":"81.1496"}},"phone":"1-570-236-7033"} 
+ </msg>
+<msg time="2025-07-28T18:10:36.451867" level="INFO">C:\Users\Utilisateur\AppData\Roaming\Python\Python313\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakestoreapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-07-28T18:10:36.452667" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>/users/99999</arg>
+<arg>json=${VALID_USER}</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-07-28T18:10:36.355349" elapsed="0.097425"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>⚠️ ID inexistant mais statut : ${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-07-28T18:10:36.453178" elapsed="0.000904"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-07-28T18:10:36.455122" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-07-28T18:10:36.454429" elapsed="0.000782"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>⚠️ Cette API ne valide pas l'existence de l'utilisateur à mettre à jour.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-07-28T18:10:36.455690" elapsed="0.000550"/>
+</kw>
+<status status="PASS" start="2025-07-28T18:10:36.354580" elapsed="0.102024"/>
+</test>
+<test id="s1-t9" name="❌ Mise à Jour - Données Vides" line="71">
+<kw name="PUT On Session" owner="RequestsLibrary">
+<msg time="2025-07-28T18:10:36.557647" level="INFO">PUT Request : url=https://fakestoreapi.com/users/1 
+ path_url=/users/1 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '4', 'Content-Type': 'application/json'} 
+ body=b'"{}"' 
+ </msg>
+<msg time="2025-07-28T18:10:36.557774" level="INFO">PUT Response : url=https://fakestoreapi.com/users/1 
+ status=400, reason=Bad Request 
+ headers={'Date': 'Mon, 28 Jul 2025 18:10:38 GMT', 'Content-Type': 'text/html; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Content-Security-Policy': "default-src 'none'", 'X-Content-Type-Options': 'nosniff', 'X-Powered-By': 'Express', 'Cf-Cache-Status': 'DYNAMIC', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=YtPerdKoNXXzZaGPaXJYtt%2FMpBghiaNIWEGS4mMb6hhbHsiF3IuUwnFIGsx4gucsrCp0eSMxaiqMg%2BPTRdi1wTUQx1iVhvEUoG8eEy9c4yslOwFEr04f9SbQQe8%3D"}]}', 'Server': 'cloudflare', 'CF-RAY': '9666559cee6fd145-CDG', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body=&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+&lt;meta charset="utf-8"&gt;
+&lt;title&gt;Error&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;pre&gt;Bad Request&lt;/pre&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+ 
+ </msg>
+<msg time="2025-07-28T18:10:36.557880" level="INFO">C:\Users\Utilisateur\AppData\Roaming\Python\Python313\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakestoreapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-07-28T18:10:36.558684" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>/users/${USER_ID}</arg>
+<arg>json={}</arg>
+<arg>expected_status=400</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-07-28T18:10:36.458895" elapsed="0.099875"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>🔄 Statut HTTP : ${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-07-28T18:10:36.559181" elapsed="0.000946"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-07-28T18:10:36.561158" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>400</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-07-28T18:10:36.560543" elapsed="0.000700"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>✅ L’API refuse logiquement une mise à jour avec données vides.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-07-28T18:10:36.561701" elapsed="0.000472"/>
+</kw>
+<status status="PASS" start="2025-07-28T18:10:36.457845" elapsed="0.104673"/>
+</test>
+<test id="s1-t10" name="✅ Suppression Utilisateur - Scénario Valide" line="77">
+<kw name="DELETE On Session" owner="RequestsLibrary">
+<msg time="2025-07-28T18:10:36.764394" level="INFO">DELETE Request : url=https://fakestoreapi.com/users/1 
+ path_url=/users/1 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2025-07-28T18:10:36.764515" level="INFO">DELETE Response : url=https://fakestoreapi.com/users/1 
+ status=200, reason=OK 
+ headers={'Date': 'Mon, 28 Jul 2025 18:10:38 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"120-HNMhv14aQeBJetA9fBvavCZ+gdk"', 'X-Powered-By': 'Express', 'Cf-Cache-Status': 'DYNAMIC', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=STaK8jtCxv%2F7GaQ4pjRD%2B1jCP7d4XR%2B1ZqtYwfv9Oj1X2ThyBHnhEHCmhvfexJ50yTCTzk%2BM4TmyTNh94AjsVaQyx7RTI75%2FBKcDy%2F3EBw01z3GzvQ%2B0XY0QuCo%3D"}]}', 'Content-Encoding': 'gzip', 'Server': 'cloudflare', 'CF-RAY': '9666559d8fb1d145-CDG', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={"address":{"geolocation":{"lat":"-37.3159","long":"81.1496"},"city":"kilcoole","street":"new road","number":7682,"zipcode":"12926-3874"},"id":1,"email":"john@gmail.com","username":"johnd","password":"m38rmF$","name":{"firstname":"john","lastname":"doe"},"phone":"1-570-236-7033","__v":0} 
+ </msg>
+<msg time="2025-07-28T18:10:36.764602" level="INFO">C:\Users\Utilisateur\AppData\Roaming\Python\Python313\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakestoreapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-07-28T18:10:36.765397" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>/users/${USER_ID}</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-07-28T18:10:36.565364" elapsed="0.200121"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-07-28T18:10:36.766587" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-07-28T18:10:36.765948" elapsed="0.000724"/>
+</kw>
+<status status="PASS" start="2025-07-28T18:10:36.564099" elapsed="0.203015"/>
+</test>
+<test id="s1-t11" name="❌ Suppression Utilisateur - ID Inexistant" line="81">
+<kw name="DELETE On Session" owner="RequestsLibrary">
+<msg time="2025-07-28T18:10:36.961455" level="INFO">DELETE Request : url=https://fakestoreapi.com/users/99999 
+ path_url=/users/99999 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2025-07-28T18:10:36.961668" level="INFO">DELETE Response : url=https://fakestoreapi.com/users/99999 
+ status=200, reason=OK 
+ headers={'Date': 'Mon, 28 Jul 2025 18:10:38 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"4-K+iMpCQsduglOsYkdIUQZQMtaDM"', 'X-Powered-By': 'Express', 'Cf-Cache-Status': 'DYNAMIC', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=yoseQQ9ajcReA2PQ6q6Z7izy0mxmmsfKmurWrZEKXdyOEmyThL9Et42YW4nlXjpdMx7Ymcb4JOULNGnHyyBdY6024DyKtcrUeZEchoLr8tMeXtct45E12Bpq2Ys%3D"}]}', 'Content-Encoding': 'gzip', 'Server': 'cloudflare', 'CF-RAY': '9666559eda33d145-CDG', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body=null 
+ </msg>
+<msg time="2025-07-28T18:10:36.961844" level="INFO">C:\Users\Utilisateur\AppData\Roaming\Python\Python313\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakestoreapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-07-28T18:10:36.970404" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>/users/99999</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-07-28T18:10:36.769036" elapsed="0.201461"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Statut HTTP obtenu : ${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-07-28T18:10:36.992687" elapsed="0.005817"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Corps de la réponse : ${response.text}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-07-28T18:10:36.999086" elapsed="0.002267"/>
+</kw>
+<kw name="Should Not Contain" owner="BuiltIn">
+<arg>${response.text}</arg>
+<arg>"success"</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" start="2025-07-28T18:10:37.044863" elapsed="0.002053"/>
+</kw>
+<status status="PASS" start="2025-07-28T18:10:36.768279" elapsed="0.281985"/>
+</test>
+<test id="s1-t12" name="Suppression Utilisateur - ID Texte" line="88">
+<kw name="DELETE On Session" owner="RequestsLibrary">
+<msg time="2025-07-28T18:10:37.280525" level="INFO">DELETE Request : url=https://fakestoreapi.com/users/abc 
+ path_url=/users/abc 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2025-07-28T18:10:37.280693" level="INFO">DELETE Response : url=https://fakestoreapi.com/users/abc 
+ status=400, reason=Bad Request 
+ headers={'Date': 'Mon, 28 Jul 2025 18:10:38 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '57', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"39-c+fGpiiXQH9CfiwB4wJOltECia0"', 'X-Powered-By': 'Express', 'Cf-Cache-Status': 'DYNAMIC', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=WQf6zMGnawhRgAFEjGzkslx%2BFOthWpvKX5a1Jv%2BioK9hSrkUeRfNJyZf%2FZxS1C4nfzhsfjgOjCoZfapDrfNqjQy1%2BZ23FhPaaFKCP0P2sOVuGix7nZ%2FADjx6RwA%3D"}]}', 'Server': 'cloudflare', 'CF-RAY': '966655a16f67d145-CDG', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={"status":"error","message":"user id should be provided"} 
+ </msg>
+<msg time="2025-07-28T18:10:37.280826" level="INFO">C:\Users\Utilisateur\AppData\Roaming\Python\Python313\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'fakestoreapi.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-07-28T18:10:37.282260" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>/users/abc</arg>
+<arg>expected_status=ANY</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-07-28T18:10:37.173950" elapsed="0.108403"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-07-28T18:10:37.283970" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>400</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-07-28T18:10:37.282873" elapsed="0.001251"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-07-28T18:10:37.286334" level="INFO">${body} = {"status":"error","message":"user id should be provided"}</msg>
+<var>${body}</var>
+<arg>${response.text}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-07-28T18:10:37.284870" elapsed="0.001535"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Réponse erreur : ${body}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-07-28T18:10:37.286882" elapsed="0.004539"/>
+</kw>
+<status status="PASS" start="2025-07-28T18:10:37.158004" elapsed="0.139631"/>
+</test>
+<status status="PASS" start="2025-07-28T18:10:33.894736" elapsed="3.404566"/>
+</suite>
+<statistics>
+<total>
+<stat pass="12" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Testcases" id="s1" pass="12" fail="0" skip="0">Testcases</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
