@@ -2,22 +2,15 @@
 *** Settings ***
 Library    RequestsLibrary
 Variables  ../pageobject/variables.py
+Library    ../MongoLibrary.py    ${DB_HOST}    ${DB_NAME}    ${collProduct}  
 
-*** Variables ***
-${DB_HOST}    mongodb+srv://admin:passer123@clusterqatestexamen.ju7prft.mongodb.net/?retryWrites=true&w=majority&appName=ClusterQaTestExamen
-${DB_NAME}    label1DB
-${collProduct}    products
-${collUsers}    users
-${collCarts}    carts
 
 *** Keywords ***
 Connect To MongoDB
     ${client}=    Evaluate    __import__('pymongo').MongoClient("${DB_HOST}")    modules=pymongo
     Set Suite Variable    ${client}
-
     ${db}=    Evaluate    ${client}.get_database("${DB_NAME}")
     Set Suite Variable    ${db}
-
     ${collectionProduct}=    Evaluate    ${db}.get_collection("${collProduct}")
     ${collectionUsers}=     Evaluate    ${db}.get_collection("${collUsers}")
     ${collectionCart}=      Evaluate    ${db}.get_collection("${collCarts}")

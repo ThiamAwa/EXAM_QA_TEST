@@ -9,30 +9,32 @@ ${collProduct}    products
 ${collUsers}    users
 ${collCarts}    carts
 
+
+
 *** Keywords ***
-Connect To MongoDB
-    ${client}=    Evaluate    __import__('pymongo').MongoClient("${DB_HOST}")    modules=pymongo
-    Set Suite Variable    ${client}
-
-    ${db}=    Evaluate    ${client}.get_database("${DB_NAME}")
-    Set Suite Variable    ${db}
-
-    ${collectionProduct}=    Evaluate    ${db}.get_collection("${collProduct}")
-    ${collectionUsers}=     Evaluate    ${db}.get_collection("${collUsers}")
-    ${collectionCart}=      Evaluate    ${db}.get_collection("${collCarts}")
-
-    Set Suite Variable    ${collectionProduct}
-    Set Suite Variable    ${collectionUsers}
-    Set Suite Variable    ${collectionCart}
-
-
+# Connect To MongoDB
+#     ${client}=    Evaluate    __import__('pymongo').MongoClient('${DB_HOST}')
+#     Set Suite Variable    ${client}
+#     ${db}=    Evaluate    __import__('pymongo').MongoClient('${DB_HOST}').get_database('${DB_NAME}')
+#     Set Suite Variable    ${db}
+#     ${collectionProduct}=    Evaluate    __import__('pymongo').MongoClient('${DB_HOST}').get_database('${DB_NAME}').get_collection('${collProduct}')
+#     ${collectionUsers}=    Evaluate    __import__('pymongo').MongoClient('${DB_HOST}').get_database('${DB_NAME}').get_collection('${collUsers}')
+#     ${collectionCart}=    Evaluate    __import__('pymongo').MongoClient('${DB_HOST}').get_database('${DB_NAME}').get_collection('${collCarts}')
+#     Set Suite Variable    ${collectionProduct}
+#     Set Suite Variable    ${collectionUsers}
+#     Set Suite Variable    ${collectionCart}
 
 
 
 #                         CRUD PRODUCT     
+# Add Product
+#     [Arguments]    ${product_data}
+#     Evaluate    ${collectionProduct}.insert_one(${product_data})
+
 Add Product
     [Arguments]    ${product_data}
-    Evaluate    ${collProduct}.insert_one(${product_data})
+    Evaluate    __import__('pymongo').MongoClient('${DB_HOST}').get_database('${DB_NAME}').get_collection('${collProduct}').insert_one(${product_data})    modules=pymongo
+
     
 
 Read Product by id

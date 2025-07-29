@@ -4,7 +4,9 @@ Resource    ../ressources/products_keywords.robot
 Library    Collections
 
 
-Suite Setup    Connect To MongoDB
+
+# Suite Setup    Connect To MongoDB
+
 
 *** Test Cases ***
 
@@ -13,10 +15,10 @@ Suite Setup    Connect To MongoDB
 CAS_TEST_1 Add Product pass
     [Tags]    smoke
     ${data}=    Create Dictionary
-    ...    id=2
-    ...    title= sucre 
+    ...    id=4
+    ...    title=  
     ...    price=750
-    ...    description=sucre
+    ...    description=lait
     ...    image=https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg
     ...    category=alimentaire
     Add Product    ${data}
