@@ -18,9 +18,8 @@ VALID_USER = {
         }
     },
     "phone": "1-570-236-7033"
-
-    
 }
+
 INVALID_USER_1 = {
     "email": "",
     "username": "johnd",
@@ -33,3 +32,17 @@ INVALID_USER_2 = {
     "password": "123456"
 }
 
+VALID_USER_AUTH = {
+    "username": "mor_2314",
+    "password": "83r5^_"
+}
+
+INVALID_USER_1_AUTH = {
+    "username": "",
+    "password": "any"
+}
+
+INVALID_USER_2_AUTH = {
+    "username": "mor_2314",
+    "password": "wrongpass"
+}

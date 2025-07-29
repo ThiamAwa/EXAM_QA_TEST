@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    ../ressources/ressource.robot
+Resource    ../ressources/user_keywords.robot
 Library     Collections
 Library           RequestsLibrary
 
