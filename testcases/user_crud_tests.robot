@@ -23,7 +23,8 @@ Création Utilisateur - Email Vide
     Log To Console    Statut HTTP : ${response.status_code}
     Should Be Equal As Integers    ${response.status_code}    200
     Log To Console    ⚠️ L’API accepte un utilisateur avec email vide — cela montre un manque de validation côté backend.
-
+    Log To Console    ${response.content}
+    
 Création Utilisateur - Username Vide
     [Documentation]    Teste la création d’un utilisateur avec un champ username vide. L’API ne devrait pas accepter cette requête.
     ${response}=    POST On Session    api    /users    json=${INVALID_USER_2}
@@ -34,10 +35,9 @@ Lecture Utilisateur - Valide
     ${response}=    GET On Session    api    /users/${USER_ID} 
     Log To Console    Lecture Utilisateur - Status : ${response.status_code}
     Should Be Equal As Integers    ${response.status_code}    200
-    # ${content}=    Evaluate    response.content.decode("utf-8")    response=${response}
-    # ${body}=    Evaluate    json.loads(content)    content=${content}    json=json
-    # Should Not Be Empty    ${body}    ⚠️ Réponse JSON vide ou invalide !
-    # Log To Console    Lecture Utilisateur - Réponse : ${body}
+   
+     Log To Console    ${response.status_code}
+     Log To Console    ${response.content}
 
 
 ❌ Lecture Utilisateur - ID Inexistant

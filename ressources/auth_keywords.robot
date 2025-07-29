@@ -17,5 +17,8 @@ Obtenir Token
     ${payload}=    Create Dictionary    username=${USERNAME}    password=${PASSWORD}
     ${response}=    POST On Session    fakeapi    ${LOGIN_ENDPOINT}    json=${payload}
     Should Be Equal As Numbers    ${response.status_code}    200
+    Log To Console    ${response.status_code}
+    Log To Console    ${response.content}
     # ${json}=    ${response.json()}
+
     # ${json}=    Evaluate
