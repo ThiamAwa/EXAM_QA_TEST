@@ -1,48 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2.2 (Python 3.13.3 on win32)" generated="2025-07-29T17:24:04.534797" rpa="false" schemaversion="5">
-<suite id="s1" name="Products Test Cases" source="C:\Users\Pc\EXAM_QA_TEST\testcases\products_test_cases.robot">
-<test id="s1-t1" name="CAS_TEST_1 Add Product pass" line="15">
+<robot generator="Robot 7.2.2 (Python 3.13.3 on win32)" generated="2025-07-30T16:13:55.581663" rpa="false" schemaversion="5">
+<suite id="s1" name="Carts Test Cases" source="C:\Users\Pc\EXAM_QA_TEST\testcases\carts_test_cases.robot">
+<test id="s1-t1" name="CAS_TEST_13 Add Cart with invalid data" line="102">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-07-29T17:24:05.968939" level="INFO">${data} = {'id': '4', 'title': '', 'price': '750', 'description': 'lait', 'image': 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg', 'category': 'alimentaire'}</msg>
+<msg time="2025-07-30T16:13:57.192525" level="INFO">${data} = {'userId': '1', 'date': '2023-07-28', 'products': [{'productId': 'invalid', 'quantity': 5}, {'productId': 2, 'quantity': 15}]}</msg>
 <var>${data}</var>
-<arg>id=4</arg>
-<arg>title=</arg>
-<arg>price=750</arg>
-<arg>description=lait</arg>
-<arg>image=https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg</arg>
-<arg>category=alimentaire</arg>
+<arg>userId=1</arg>
+<arg>date=2023-07-28</arg>
+<arg>products=${{ [{"productId": "invalid", "quantity": 5},{"productId": 2, "quantity": 15}] }}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-07-29T17:24:05.968434" elapsed="0.000568"/>
+<status status="PASS" start="2025-07-30T16:13:57.190130" elapsed="0.002515"/>
 </kw>
-<kw name="Add Product" owner="products_keywords">
+<kw name="Add Cart" owner="carts_keywords">
 <kw name="Evaluate" owner="BuiltIn">
-<arg>__import__('pymongo').MongoClient('${DB_HOST}').get_database('${DB_NAME}').get_collection('${collProduct}').insert_one(${product_data})</arg>
+<msg time="2025-07-30T16:13:58.764096" level="FAIL">Evaluating expression "__import__('pymongo').MongoClient('mongodb+srv://admin:passer123@clusterqatestexamen.ju7prft.mongodb.net/?retryWrites=true&amp;w=majority&amp;appName=ClusterQaTestExamen').get_database('label1DB').get_collection('carts').insert_one({'userId': '1', 'date': '2023-07-28', 'products': [{'productId': 'invalid', 'quantity': 5}, {'productId': 2, 'quantity': 15}]})" failed: WriteError: Document failed validation, full error: {'index': 0, 'code': 121, 'errmsg': 'Document failed validation', 'errInfo': {'failingDocumentId': ObjectId('688a44c543b9caf9f838b5c6'), 'details': {'operatorName': '$jsonSchema', 'schemaRulesNotSatisfied': [{'operatorName': 'properties', 'propertiesNotSatisfied': [{'propertyName': 'userId', 'description': "L'userId est requis et doit être un entier", 'details': [{'operatorName': 'bsonType', 'specifiedAs': {'bsonType': 'int'}, 'reason': 'type did not match', 'consideredValue': '1', 'consideredType': 'string'}]}, {'propertyName': 'date', 'description': 'La date est requise', 'details': [{'operatorName': 'bsonType', 'specifiedAs': {'bsonType': 'date'}, 'reason': 'type did not match', 'consideredValue': '2023-07-28', 'consideredType': 'string'}]}, {'propertyName': 'products', 'description': 'Liste des produits', 'details': [{'operatorName': 'items', 'reason': 'At least one item did not match the sub-schema', 'itemIndex': 0, 'details': [{'operatorName': 'properties', 'propertiesNotSatisfied': [{'propertyName': 'productId', 'description': 'ID du produit requis', 'details': [{'operatorName': 'bsonType', 'specifiedAs': {'bsonType': 'int'}, 'reason': 'type did not match', 'consideredValue': 'invalid', 'consideredType': 'string'}]}]}]}]}]}, {'operatorName': 'required', 'specifiedAs': {'required': ['id', 'userId', 'products', 'date']}, 'missingProperties': ['id']}]}}}</msg>
+<var>${cart}</var>
+<arg>__import__('pymongo').MongoClient('${DB_HOST}').get_database('${DB_NAME}').get_collection('${collCarts}').insert_one(${carts_data})</arg>
 <arg>modules=pymongo</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-07-29T17:24:05.969984" elapsed="1.627124"/>
-</kw>
-<arg>${data}</arg>
-<status status="PASS" start="2025-07-29T17:24:05.969474" elapsed="1.628068"/>
+<status status="FAIL" start="2025-07-30T16:13:57.195250" elapsed="1.570347">Evaluating expression "__import__('pymongo').MongoClient('mongodb+srv://admin:passer123@clusterqatestexamen.ju7prft.mongodb.net/?retryWrites=true&amp;w=majority&amp;appName=ClusterQaTestExamen').get_database('label1DB').get_collection('carts').insert_one({'userId': '1', 'date': '2023-07-28', 'products': [{'productId': 'invalid', 'quantity': 5}, {'productId': 2, 'quantity': 15}]})" failed: WriteError: Document failed validation, full error: {'index': 0, 'code': 121, 'errmsg': 'Document failed validation', 'errInfo': {'failingDocumentId': ObjectId('688a44c543b9caf9f838b5c6'), 'details': {'operatorName': '$jsonSchema', 'schemaRulesNotSatisfied': [{'operatorName': 'properties', 'propertiesNotSatisfied': [{'propertyName': 'userId', 'description': "L'userId est requis et doit être un entier", 'details': [{'operatorName': 'bsonType', 'specifiedAs': {'bsonType': 'int'}, 'reason': 'type did not match', 'consideredValue': '1', 'consideredType': 'string'}]}, {'propertyName': 'date', 'description': 'La date est requise', 'details': [{'operatorName': 'bsonType', 'specifiedAs': {'bsonType': 'date'}, 'reason': 'type did not match', 'consideredValue': '2023-07-28', 'consideredType': 'string'}]}, {'propertyName': 'products', 'description': 'Liste des produits', 'details': [{'operatorName': 'items', 'reason': 'At least one item did not match the sub-schema', 'itemIndex': 0, 'details': [{'operatorName': 'properties', 'propertiesNotSatisfied': [{'propertyName': 'productId', 'description': 'ID du produit requis', 'details': [{'operatorName': 'bsonType', 'specifiedAs': {'bsonType': 'int'}, 'reason': 'type did not match', 'consideredValue': 'invalid', 'consideredType': 'string'}]}]}]}]}]}, {'operatorName': 'required', 'specifiedAs': {'required': ['id', 'userId', 'products', 'date']}, 'missingProperties': ['id']}]}}}</status>
 </kw>
 <kw name="Log To Console" owner="BuiltIn">
-<arg>${data}</arg>
+<arg>${cart.inserted_id}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-07-29T17:24:07.598172" elapsed="0.000769"/>
+<status status="NOT RUN" start="2025-07-30T16:13:58.767135" elapsed="0.000327"/>
 </kw>
-<tag>smoke</tag>
-<status status="PASS" start="2025-07-29T17:24:05.966765" elapsed="1.632667"/>
+<var>${response}</var>
+<arg>${data}</arg>
+<status status="FAIL" start="2025-07-30T16:13:57.193370" elapsed="1.574969">Evaluating expression "__import__('pymongo').MongoClient('mongodb+srv://admin:passer123@clusterqatestexamen.ju7prft.mongodb.net/?retryWrites=true&amp;w=majority&amp;appName=ClusterQaTestExamen').get_database('label1DB').get_collection('carts').insert_one({'userId': '1', 'date': '2023-07-28', 'products': [{'productId': 'invalid', 'quantity': 5}, {'productId': 2, 'quantity': 15}]})" failed: WriteError: Document failed validation, full error: {'index': 0, 'code': 121, 'errmsg': 'Document failed validation', 'errInfo': {'failingDocumentId': ObjectId('688a44c543b9caf9f838b5c6'), 'details': {'operatorName': '$jsonSchema', 'schemaRulesNotSatisfied': [{'operatorName': 'properties', 'propertiesNotSatisfied': [{'propertyName': 'userId', 'description': "L'userId est requis et doit être un entier", 'details': [{'operatorName': 'bsonType', 'specifiedAs': {'bsonType': 'int'}, 'reason': 'type did not match', 'consideredValue': '1', 'consideredType': 'string'}]}, {'propertyName': 'date', 'description': 'La date est requise', 'details': [{'operatorName': 'bsonType', 'specifiedAs': {'bsonType': 'date'}, 'reason': 'type did not match', 'consideredValue': '2023-07-28', 'consideredType': 'string'}]}, {'propertyName': 'products', 'description': 'Liste des produits', 'details': [{'operatorName': 'items', 'reason': 'At least one item did not match the sub-schema', 'itemIndex': 0, 'details': [{'operatorName': 'properties', 'propertiesNotSatisfied': [{'propertyName': 'productId', 'description': 'ID du produit requis', 'details': [{'operatorName': 'bsonType', 'specifiedAs': {'bsonType': 'int'}, 'reason': 'type did not match', 'consideredValue': 'invalid', 'consideredType': 'string'}]}]}]}]}]}, {'operatorName': 'required', 'specifiedAs': {'required': ['id', 'userId', 'products', 'date']}, 'missingProperties': ['id']}]}}}</status>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${response}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2025-07-30T16:13:58.772375" elapsed="0.000269"/>
+</kw>
+<tag>cartsC2</tag>
+<status status="FAIL" start="2025-07-30T16:13:57.186957" elapsed="1.587637">Evaluating expression "__import__('pymongo').MongoClient('mongodb+srv://admin:passer123@clusterqatestexamen.ju7prft.mongodb.net/?retryWrites=true&amp;w=majority&amp;appName=ClusterQaTestExamen').get_database('label1DB').get_collection('carts').insert_one({'userId': '1', 'date': '2023-07-28', 'products': [{'productId': 'invalid', 'quantity': 5}, {'productId': 2, 'quantity': 15}]})" failed: WriteError: Document failed validation, full error: {'index': 0, 'code': 121, 'errmsg': 'Document failed validation', 'errInfo': {'failingDocumentId': ObjectId('688a44c543b9caf9f838b5c6'), 'details': {'operatorName': '$jsonSchema', 'schemaRulesNotSatisfied': [{'operatorName': 'properties', 'propertiesNotSatisfied': [{'propertyName': 'userId', 'description': "L'userId est requis et doit être un entier", 'details': [{'operatorName': 'bsonType', 'specifiedAs': {'bsonType': 'int'}, 'reason': 'type did not match', 'consideredValue': '1', 'consideredType': 'string'}]}, {'propertyName': 'date', 'description': 'La date est requise', 'details': [{'operatorName': 'bsonType', 'specifiedAs': {'bsonType': 'date'}, 'reason': 'type did not match', 'consideredValue': '2023-07-28', 'consideredType': 'string'}]}, {'propertyName': 'products', 'description': 'Liste des produits', 'details': [{'operatorName': 'items', 'reason': 'At least one item did not match the sub-schema', 'itemIndex': 0, 'details': [{'operatorName': 'properties', 'propertiesNotSatisfied': [{'propertyName': 'productId', 'description': 'ID du produit requis', 'details': [{'operatorName': 'bsonType', 'specifiedAs': {'bsonType': 'int'}, 'reason': 'type did not match', 'consideredValue': 'invalid', 'consideredType': 'string'}]}]}]}]}]}, {'operatorName': 'required', 'specifiedAs': {'required': ['id', 'userId', 'products', 'date']}, 'missingProperties': ['id']}]}}}</status>
 </test>
-<status status="PASS" start="2025-07-29T17:24:04.538093" elapsed="3.062869"/>
+<status status="FAIL" start="2025-07-30T16:13:55.585370" elapsed="3.231947"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="1" fail="0" skip="0">smoke</stat>
+<stat pass="0" fail="1" skip="0">cartsC2</stat>
 </tag>
 <suite>
-<stat name="Products Test Cases" id="s1" pass="1" fail="0" skip="0">Products Test Cases</stat>
+<stat name="Carts Test Cases" id="s1" pass="0" fail="1" skip="0">Carts Test Cases</stat>
 </suite>
 </statistics>
 <errors>
