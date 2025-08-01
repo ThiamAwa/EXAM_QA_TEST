@@ -1,48 +1,140 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2.2 (Python 3.13.3 on win32)" generated="2025-07-29T17:24:04.534797" rpa="false" schemaversion="5">
-<suite id="s1" name="Products Test Cases" source="C:\Users\Pc\EXAM_QA_TEST\testcases\products_test_cases.robot">
-<test id="s1-t1" name="CAS_TEST_1 Add Product pass" line="15">
+<robot generator="Robot 7.2.2 (Python 3.13.1 on win32)" generated="2025-08-01T00:09:32.829006" rpa="false" schemaversion="5">
+<suite id="s1" name="Auth Tests" source="C:\Selenium\Eamen_Test_QA\label1\testcases\auth_tests.robot">
+<test id="s1-t1" name="Connexion Mot de Passe Incorrect" line="22">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-07-29T17:24:05.968939" level="INFO">${data} = {'id': '4', 'title': '', 'price': '750', 'description': 'lait', 'image': 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg', 'category': 'alimentaire'}</msg>
-<var>${data}</var>
-<arg>id=4</arg>
-<arg>title=</arg>
-<arg>price=750</arg>
-<arg>description=lait</arg>
-<arg>image=https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg</arg>
-<arg>category=alimentaire</arg>
+<msg time="2025-08-01T00:09:33.814520" level="INFO">${credentials} = {'username': 'johndoe', 'password': 'fauxmotdepasse'}</msg>
+<var>${credentials}</var>
+<arg>username=johndoe</arg>
+<arg>password=fauxmotdepasse</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-07-29T17:24:05.968434" elapsed="0.000568"/>
+<status status="PASS" start="2025-08-01T00:09:33.814054" elapsed="0.000526"/>
 </kw>
-<kw name="Add Product" owner="products_keywords">
+<kw name="Login User" owner="auth_keywords">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-08-01T00:09:33.816887" level="INFO">${user_query} = {'username': 'johndoe', 'password': 'fauxmotdepasse'}</msg>
+<var>${user_query}</var>
+<arg>{'username': '${credentials['username']}', 'password': '${credentials['password']}'}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-08-01T00:09:33.815792" elapsed="0.001142"/>
+</kw>
 <kw name="Evaluate" owner="BuiltIn">
-<arg>__import__('pymongo').MongoClient('${DB_HOST}').get_database('${DB_NAME}').get_collection('${collProduct}').insert_one(${product_data})</arg>
-<arg>modules=pymongo</arg>
+<msg time="2025-08-01T00:09:42.731294" level="INFO">${user} = None</msg>
+<var>${user}</var>
+<arg>__import__('pymongo').MongoClient('mongodb+srv://admin:passer123@clusterqatestexamen.ju7prft.mongodb.net').get_database('${DB_NAME}').get_collection('${collUsers}').find_one(${user_query})</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-07-29T17:24:05.969984" elapsed="1.627124"/>
+<status status="PASS" start="2025-08-01T00:09:33.817087" elapsed="8.914338"/>
 </kw>
-<arg>${data}</arg>
-<status status="PASS" start="2025-07-29T17:24:05.969474" elapsed="1.628068"/>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-08-01T00:09:42.732240" level="INFO">${result} = {}</msg>
+<var>${result}</var>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-08-01T00:09:42.731839" elapsed="0.000475"/>
 </kw>
-<kw name="Log To Console" owner="BuiltIn">
-<arg>${data}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-07-29T17:24:07.598172" elapsed="0.000769"/>
+<if>
+<branch type="IF" condition="$user is None">
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${result}</arg>
+<arg>status=FAILURE</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="PASS" start="2025-08-01T00:09:42.733164" elapsed="0.000431"/>
 </kw>
-<tag>smoke</tag>
-<status status="PASS" start="2025-07-29T17:24:05.966765" elapsed="1.632667"/>
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${result}</arg>
+<arg>message=Authentification échouée</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="PASS" start="2025-08-01T00:09:42.733890" elapsed="0.000350"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${result}</arg>
+<arg>error_code=401</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="PASS" start="2025-08-01T00:09:42.734489" elapsed="0.000323"/>
+</kw>
+<status status="PASS" start="2025-08-01T00:09:42.732608" elapsed="0.002319"/>
+</branch>
+<branch type="ELSE">
+<kw name="Generate Auth Token" owner="auth_keywords">
+<var>${token}</var>
+<arg>${credentials['username']}</arg>
+<status status="NOT RUN" start="2025-08-01T00:09:42.735362" elapsed="0.000063"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${result}</arg>
+<arg>status=SUCCESS</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" start="2025-08-01T00:09:42.735602" elapsed="0.000030"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${result}</arg>
+<arg>token=${token}</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" start="2025-08-01T00:09:42.735751" elapsed="0.000026"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${result}</arg>
+<arg>user=${user}</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" start="2025-08-01T00:09:42.735896" elapsed="0.000025"/>
+</kw>
+<status status="NOT RUN" start="2025-08-01T00:09:42.735020" elapsed="0.000947"/>
+</branch>
+<status status="PASS" start="2025-08-01T00:09:42.732525" elapsed="0.003480"/>
+</if>
+<return>
+<value>${result}</value>
+<status status="PASS" start="2025-08-01T00:09:42.736072" elapsed="0.000056"/>
+</return>
+<msg time="2025-08-01T00:09:42.736346" level="INFO">${response} = {'status': 'FAILURE', 'message': 'Authentification échouée', 'error_code': '401'}</msg>
+<var>${response}</var>
+<arg>${credentials}</arg>
+<status status="PASS" start="2025-08-01T00:09:33.815306" elapsed="8.921079"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${response.status}</arg>
+<arg>FAILURE</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-08-01T00:09:42.736868" elapsed="0.000920"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<msg time="2025-08-01T00:09:42.739556" level="FAIL">Authentification échouée != Mot de passe incorrect</msg>
+<arg>${response.message}</arg>
+<arg>Mot de passe incorrect</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="FAIL" start="2025-08-01T00:09:42.738290" elapsed="0.001693">Authentification échouée != Mot de passe incorrect</status>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${response}</arg>
+<arg>error_code</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="NOT RUN" start="2025-08-01T00:09:42.740438" elapsed="0.000049"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${response.error_code}</arg>
+<arg>401</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2025-08-01T00:09:42.740968" elapsed="0.000035"/>
+</kw>
+<kw name="Dictionary Should Not Contain Key" owner="Collections">
+<arg>${response}</arg>
+<arg>token</arg>
+<doc>Fails if ``key`` is found from ``dictionary``.</doc>
+<status status="NOT RUN" start="2025-08-01T00:09:42.741439" elapsed="0.000034"/>
+</kw>
+<tag>invalid</tag>
+<status status="FAIL" start="2025-08-01T00:09:33.812451" elapsed="8.929485">Authentification échouée != Mot de passe incorrect</status>
 </test>
-<status status="PASS" start="2025-07-29T17:24:04.538093" elapsed="3.062869"/>
+<status status="FAIL" start="2025-08-01T00:09:32.832345" elapsed="9.911750"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="1" fail="0" skip="0">smoke</stat>
+<stat pass="0" fail="1" skip="0">invalid</stat>
 </tag>
 <suite>
-<stat name="Products Test Cases" id="s1" pass="1" fail="0" skip="0">Products Test Cases</stat>
+<stat name="Auth Tests" id="s1" pass="0" fail="1" skip="0">Auth Tests</stat>
 </suite>
 </statistics>
 <errors>
