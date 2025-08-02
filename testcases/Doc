@@ -1,0 +1,6 @@
+EVALUATE keyword de Robot Framework pour evaluer une expression python 
+${rate}=    Evaluate    4.2
+${count}=    Evaluate    10
+Cela permet d’assurer les types 
+
+La keyword Set Variable crée une variable et lui attribue une valeur, mais 🚨 le type de la valeur devient toujours une chaîne de caractères (type str), même si tu écris un nombre.

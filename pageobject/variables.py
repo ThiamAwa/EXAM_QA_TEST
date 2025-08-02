@@ -1,5 +1,11 @@
 BASE_URL = "https://fakestoreapi.com"
 
+DB_HOST="mongodb+srv://admin:passer123@clusterqatestexamen.ju7prft.mongodb.net/?retryWrites=true&w=majority&appName=ClusterQaTestExamen"
+DB_NAME="label1DB"
+collProduct="products"
+collUsers="users"
+collCarts="carts"
+
 VALID_USER = {
     "email": "john@gmail.com",
     "username": "johnd",
