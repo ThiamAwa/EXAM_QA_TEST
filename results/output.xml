@@ -1,263 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2.2 (Python 3.13.3 on win32)" generated="2025-08-02T00:36:51.772935" rpa="false" schemaversion="5">
-<suite id="s1" name="Looma Test Case" source="C:\Users\Pc\EXAM_QA_TEST\testcases\Lab4\looma_test_case.robot">
-<test id="s1-t1" name="Open the app" line="8">
-<kw name="Open App" owner="looma_keywords">
-<kw name="Open Application" owner="AppiumLibrary">
-<arg>http://localhost:4723</arg>
-<arg>platformName=Android</arg>
-<arg>deviceName=Pixel 3a API 35</arg>
-<arg>appPackage=sn.sonatel.dsi.moussa.wade.moussawade</arg>
-<arg>appActivity=.MainActivity</arg>
-<arg>automationName=UiAutomator2</arg>
-<doc>Opens a new application to given Appium server.
-Capabilities of appium server, Android and iOS,
-Please check https://appium.io/docs/en/2.1/cli/args/
-| *Option*            | *Man.* | *Description*     |
-| remote_url          | Yes    | Appium server url |
-| alias               | no     | alias             |
-| strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
-<status status="PASS" start="2025-08-02T00:36:52.396784" elapsed="17.268841"/>
+<robot generator="Robot 7.2.2 (Python 3.13.3 on win32)" generated="2025-08-02T01:58:44.029277" rpa="false" schemaversion="5">
+<suite id="s1" name="Ebay Test Cases" source="C:\Users\Pc\EXAM_QA_TEST\testcases\LAB3\ebay_test_cases.robot">
+<kw name="Désactiver Avertissements SSL" owner="ebay_keywords" type="SETUP">
+<kw name="Set Environment Variable" owner="OperatingSystem">
+<msg time="2025-08-02T01:58:45.647284" level="INFO">Environment variable 'PYTHONWARNINGS' set to value 'ignore:Unverified HTTPS request'.</msg>
+<arg>PYTHONWARNINGS</arg>
+<arg>ignore:Unverified HTTPS request</arg>
+<doc>Sets an environment variable to a specified value.</doc>
+<status status="PASS" start="2025-08-02T01:58:45.647051" elapsed="0.000316"/>
 </kw>
-<status status="PASS" start="2025-08-02T00:36:52.395659" elapsed="17.270296"/>
+<status status="PASS" start="2025-08-02T01:58:45.645866" elapsed="0.001635"/>
 </kw>
-<status status="PASS" start="2025-08-02T00:36:52.393794" elapsed="17.278330"/>
-</test>
-<test id="s1-t2" name="Login" line="10">
-<kw name="Type Valid login credentials" owner="looma_keywords">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-02T00:37:12.730333" level="INFO">xpath criteria: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]</msg>
-<arg>${USERNAME}</arg>
-<arg>5</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-02T00:37:09.702287" elapsed="3.028253"/>
+<test id="s1-t1" name="Get Single Order_Test Non Passant" line="23">
+<kw name="Get Single Order - Test Non Passant" owner="ebay_keywords">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-08-02T01:58:45.649454" level="INFO">${invalid_order_id} = 123456789INVALID</msg>
+<var>${invalid_order_id}</var>
+<arg>123456789INVALID</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-08-02T01:58:45.649237" elapsed="0.000262"/>
 </kw>
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-02T00:37:12.887179" level="INFO">xpath criteria: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]</msg>
-<arg>${PASSWORD}</arg>
-<arg>5</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-02T00:37:12.731008" elapsed="0.156337"/>
+<kw name="Create Ebay Session" owner="ebay_keywords">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-08-02T01:58:45.650324" level="INFO">Creating Session using : alias=ebay, url=https://api.sandbox.ebay.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>ebay</arg>
+<arg>${base_url_ebay}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-08-02T01:58:45.650141" elapsed="0.000627"/>
 </kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-02T00:37:12.892828" level="INFO">Clicking element '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]'.</msg>
-<msg time="2025-08-02T00:37:13.202254" level="INFO">xpath criteria: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]</msg>
-<arg>${USERNAME}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-02T00:37:12.887719" elapsed="0.314680"/>
+<doc>Crée une session HTTP pour eBay avec le token d'autorisation</doc>
+<status status="PASS" start="2025-08-02T01:58:45.649715" elapsed="0.001285"/>
 </kw>
-<kw name="Input Text" owner="AppiumLibrary">
-<msg time="2025-08-02T00:37:13.208910" level="INFO">Typing text 'johnd' into text field '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]'</msg>
-<msg time="2025-08-02T00:37:14.763574" level="INFO">xpath criteria: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]</msg>
-<arg>${USERNAME}</arg>
-<arg>johnd</arg>
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-02T00:37:13.202685" elapsed="1.561022"/>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-08-02T01:58:45.652101" level="INFO">${headers} = {'Authorization': 'Bearer v^1.1#i^1#r^0#p^3#I^3#f^0#t^H4sIAAAAAAAA/+VYW2wcVxn2+pIoCaGitGlBFdpMSqU2mt0z150ZshvW3t1kndje9axN7FKWMzNn1mPPzgxz8XpdHowpKagXtRIqDxiISAVU3FtcFTUhFg9RSCMoiKovUQlqCRBBiFIJgooCZ9...</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${ACCESS_TOKEN}</arg>
+<arg>Content-Type=application/json</arg>
+<arg>Accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-08-02T01:58:45.651307" elapsed="0.000850"/>
 </kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-02T00:37:14.766834" level="INFO">Clicking element '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]'.</msg>
-<msg time="2025-08-02T00:37:15.457146" level="INFO">xpath criteria: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]</msg>
-<arg>${PASSWORD}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-02T00:37:14.763949" elapsed="0.693337"/>
-</kw>
-<kw name="Input Password" owner="AppiumLibrary">
-<msg time="2025-08-02T00:37:15.462586" level="INFO">Typing password into text field '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]'</msg>
-<msg time="2025-08-02T00:37:17.881345" level="INFO">xpath criteria: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]</msg>
-<arg>${PASSWORD}</arg>
-<arg>m38rmF$</arg>
-<doc>Types the given password into text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-02T00:37:15.457578" elapsed="2.423940"/>
+<kw name="Get Request" owner="RequestsLibrary">
+<msg time="2025-08-02T01:58:45.652388" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2025-08-02T01:58:46.728670" level="INFO">GET Request : url=https://api.sandbox.ebay.com/sell/fulfillment/v1/order/123456789INVALID 
+ path_url=/sell/fulfillment/v1/order/123456789INVALID 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer v^1.1#i^1#r^0#p^3#I^3#f^0#t^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', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg time="2025-08-02T01:58:46.729637" level="INFO">GET Response : url=https://api.sandbox.ebay.com/sell/fulfillment/v1/order/123456789INVALID 
+ status=400, reason=Bad Request 
+ headers={'rlogid': 't6pithqauq%60fiiw%28ufmadh%7B%3F%3Ctowiugvpd%60jhs.vgiggi%7F.01d73ece%3Ce*ri%7Ecw-1986880c83b-0x2332', 'x-ebay-client-tls-version': 'TLSv1.3', 'x-content-type-options': 'nosniff', 'x-xss-protection': '0', 'cache-control': 'no-cache, no-store, max-age=0, must-revalidate', 'pragma': 'no-cache', 'expires': '0', 'x-frame-options': 'DENY', 'content-type': 'application/json', 'content-length': '188', 'date': 'Sat, 02 Aug 2025 01:58:47 GMT', 'x-envoy-upstream-service-time': '73', 'server': 'ebay-proxy-server', 'strict-transport-security': 'max-age=31536000', 'x-ebay-pop-id': 'UFES2-LVSAZ01-apisandbox'} 
+ body={"errors":[{"errorId":32100,"domain":"API_FULFILLMENT","category":"REQUEST","message":"Invalid Order Id: '123456789INVALID'","parameters":[{"name":"orderId","value":"123456789INVALID"}]}]} 
+ </msg>
+<msg time="2025-08-02T01:58:46.730133" level="INFO">C:\Users\Pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api.sandbox.ebay.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-08-02T01:58:46.731745" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<var>${response}</var>
+<arg>ebay</arg>
+<arg>/sell/fulfillment/v1/order/${invalid_order_id}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<status status="PASS" start="2025-08-02T01:58:45.652339" elapsed="1.079695"/>
 </kw>
 <kw name="Log To Console" owner="BuiltIn">
-<arg>reussi</arg>
+<arg>${response.status_code}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-08-02T00:37:17.881847" elapsed="0.001399"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-02T00:37:17.888884" level="INFO">Clicking element '//android.widget.Button[@content-desc="Se connecter"]'.</msg>
-<msg time="2025-08-02T00:37:18.785686" level="INFO">xpath criteria: //android.widget.Button[@content-desc="Se connecter"]</msg>
-<arg>${loginButton}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-02T00:37:17.883694" elapsed="0.902166"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-08-02T00:37:23.787722" level="INFO">Slept 5 seconds.</msg>
-<arg>5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-08-02T00:37:18.786179" elapsed="5.002200"/>
-</kw>
-<status status="PASS" start="2025-08-02T00:37:09.701612" elapsed="14.087413"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-08-02T00:37:28.792468" level="INFO">Slept 5 seconds.</msg>
-<arg>5</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-08-02T00:37:23.791245" elapsed="5.001935"/>
-</kw>
-<tag>"init"</tag>
-<status status="PASS" start="2025-08-02T00:37:09.684513" elapsed="19.111453"/>
-</test>
-<test id="s1-t3" name="Ajouter Produit" line="15">
-<kw name="Add Product" owner="looma_keywords">
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-02T00:37:29.034239" level="INFO">xpath criteria: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[1]</msg>
-<arg>//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[1]</arg>
-<arg>5</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-02T00:37:28.802999" elapsed="0.231450"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-02T00:37:29.038902" level="INFO">Clicking element '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[1]'.</msg>
-<msg time="2025-08-02T00:37:29.465929" level="INFO">xpath criteria: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[1]</msg>
-<arg>//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[1]</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-02T00:37:29.034821" elapsed="0.431254"/>
-</kw>
-<kw name="Input Text" owner="AppiumLibrary">
-<msg time="2025-08-02T00:37:29.471796" level="INFO">Typing text 'lait' into text field '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[1]'</msg>
-<msg time="2025-08-02T00:37:31.248246" level="INFO">xpath criteria: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[1]</msg>
-<arg>${title}</arg>
-<arg>lait</arg>
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-02T00:37:29.466357" elapsed="1.782114"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-02T00:37:31.828547" level="INFO">xpath criteria: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[2]</msg>
-<arg>//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[2]</arg>
-<arg>5</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-02T00:37:31.248875" elapsed="0.579833"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-02T00:37:31.833085" level="INFO">Clicking element '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[2]'.</msg>
-<msg time="2025-08-02T00:37:32.098956" level="INFO">xpath criteria: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[2]</msg>
-<arg>//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[2]</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-02T00:37:31.828981" elapsed="0.270144"/>
-</kw>
-<kw name="Input Text" owner="AppiumLibrary">
-<msg time="2025-08-02T00:37:32.104381" level="INFO">Typing text '1500' into text field '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[2]'</msg>
-<msg time="2025-08-02T00:37:33.484608" level="INFO">xpath criteria: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[2]</msg>
-<arg>${prix}</arg>
-<arg>1500</arg>
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-02T00:37:32.099461" elapsed="1.385308"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-02T00:37:34.149816" level="INFO">xpath criteria: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[3]</msg>
-<arg>//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[3]</arg>
-<arg>5</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-02T00:37:33.485136" elapsed="0.664869"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-02T00:37:34.156489" level="INFO">Clicking element '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[3]'.</msg>
-<msg time="2025-08-02T00:37:34.425666" level="INFO">xpath criteria: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[3]</msg>
-<arg>//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[3]</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-02T00:37:34.150494" elapsed="0.275291"/>
-</kw>
-<kw name="Input Text" owner="AppiumLibrary">
-<msg time="2025-08-02T00:37:34.430142" level="INFO">Typing text 'lait en poudre' into text field '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[3]'</msg>
-<msg time="2025-08-02T00:37:36.358457" level="INFO">xpath criteria: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[3]</msg>
-<arg>${description}</arg>
-<arg>lait en poudre</arg>
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-02T00:37:34.426001" elapsed="1.932637"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-02T00:37:36.981254" level="INFO">xpath criteria: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[4]</msg>
-<arg>//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[4]</arg>
-<arg>5</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-02T00:37:36.358955" elapsed="0.622392"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-02T00:37:36.983992" level="INFO">Clicking element '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[4]'.</msg>
-<msg time="2025-08-02T00:37:37.157308" level="INFO">xpath criteria: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[4]</msg>
-<arg>//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[4]</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-02T00:37:36.981505" elapsed="0.176119"/>
-</kw>
-<kw name="Input Text" owner="AppiumLibrary">
-<msg time="2025-08-02T00:37:37.161399" level="INFO">Typing text 'alimentaire' into text field '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[4]'</msg>
-<msg time="2025-08-02T00:37:38.362840" level="INFO">xpath criteria: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[4]</msg>
-<arg>${categorie}</arg>
-<arg>alimentaire</arg>
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-02T00:37:37.157881" elapsed="1.205106"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-02T00:37:38.925745" level="INFO">xpath criteria: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[5]</msg>
-<arg>//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[5]</arg>
-<arg>5</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-02T00:37:38.363319" elapsed="0.562568"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-02T00:37:38.930880" level="INFO">Clicking element '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[5]'.</msg>
-<msg time="2025-08-02T00:37:39.138576" level="INFO">xpath criteria: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[5]</msg>
-<arg>//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[5]</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-02T00:37:38.926149" elapsed="0.212592"/>
-</kw>
-<kw name="Input Text" owner="AppiumLibrary">
-<msg time="2025-08-02T00:37:39.143809" level="INFO">Typing text 'liat.png' into text field '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[5]'</msg>
-<msg time="2025-08-02T00:37:40.470340" level="INFO">xpath criteria: //android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[5]</msg>
-<arg>${image}</arg>
-<arg>liat.png</arg>
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<status status="PASS" start="2025-08-02T00:37:39.138998" elapsed="1.331511"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="AppiumLibrary">
-<msg time="2025-08-02T00:37:41.104040" level="INFO">xpath criteria: //android.widget.Button[@content-desc="Ajouter"]</msg>
-<arg>${submitButton}</arg>
-<arg>5</arg>
-<doc>Waits until element specified with `locator` is visible.</doc>
-<status status="PASS" start="2025-08-02T00:37:40.470834" elapsed="0.633322"/>
-</kw>
-<kw name="Click Element" owner="AppiumLibrary">
-<msg time="2025-08-02T00:37:41.111213" level="INFO">Clicking element '//android.widget.Button[@content-desc="Ajouter"]'.</msg>
-<msg time="2025-08-02T00:37:41.325380" level="INFO">xpath criteria: //android.widget.Button[@content-desc="Ajouter"]</msg>
-<arg>${submitButton}</arg>
-<doc>Click element identified by `locator`.</doc>
-<status status="PASS" start="2025-08-02T00:37:41.104398" elapsed="0.221132"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-08-02T00:37:44.326769" level="INFO">Slept 3 seconds.</msg>
-<arg>3</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-08-02T00:37:41.325803" elapsed="3.001598"/>
+<status status="PASS" start="2025-08-02T01:58:46.733106" elapsed="0.005221"/>
 </kw>
 <kw name="Log To Console" owner="BuiltIn">
-<arg>Produit ajouté à la liste de souhaits</arg>
+<arg>${response.text}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-08-02T00:37:44.328406" elapsed="0.018633"/>
+<status status="PASS" start="2025-08-02T01:58:46.739206" elapsed="0.003148"/>
 </kw>
-<status status="PASS" start="2025-08-02T00:37:28.801932" elapsed="15.545886"/>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-08-02T01:58:46.746482" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg time="2025-08-02T01:58:46.747085" level="FAIL">L'ID de commande est invalide. Test échoue comme prévu.: 400 != 200</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<arg>L'ID de commande est invalide. Test échoue comme prévu.</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="FAIL" start="2025-08-02T01:58:46.743081" elapsed="0.004982">L'ID de commande est invalide. Test échoue comme prévu.: 400 != 200</status>
 </kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-08-02T00:37:49.352351" level="INFO">Slept 5 seconds.</msg>
-<arg>5</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-08-02T00:37:44.351362" elapsed="5.001313"/>
+<doc>Ce test échoue exprès avec un ID de commande invalide</doc>
+<status status="FAIL" start="2025-08-02T01:58:45.648734" elapsed="1.099919">L'ID de commande est invalide. Test échoue comme prévu.: 400 != 200</status>
 </kw>
-<status status="PASS" start="2025-08-02T00:37:28.799789" elapsed="20.554545"/>
+<tag>ebaynonpassant2</tag>
+<status status="FAIL" start="2025-08-02T01:58:45.647606" elapsed="1.105123">L'ID de commande est invalide. Test échoue comme prévu.: 400 != 200</status>
 </test>
-<status status="PASS" start="2025-08-02T00:36:51.776422" elapsed="57.590080"/>
+<status status="FAIL" start="2025-08-02T01:58:44.032395" elapsed="2.723901"/>
 </suite>
 <statistics>
 <total>
-<stat pass="3" fail="0" skip="0">All Tests</stat>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="1" fail="0" skip="0">"init"</stat>
+<stat pass="0" fail="1" skip="0">ebaynonpassant2</stat>
 </tag>
 <suite>
-<stat name="Looma Test Case" id="s1" pass="3" fail="0" skip="0">Looma Test Case</stat>
+<stat name="Ebay Test Cases" id="s1" pass="0" fail="1" skip="0">Ebay Test Cases</stat>
 </suite>
 </statistics>
 <errors>
+<msg time="2025-08-02T01:58:45.652388" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
 </errors>
 </robot>
