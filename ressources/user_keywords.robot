@@ -3,41 +3,57 @@ Library           Collections
 Variables         ../pageobject/variables.py 
 Library    RequestsLibrary
 
+*** Variables ***
+${DB_HOST}    mongodb+srv://admin:passer123@clusterqatestexamen.ju7prft.mongodb.net
+# ...    /?retryWrites=true&w=majority&appName=ClusterQaTestExamen
+${DB_NAME}    label1DB
+${collProduct}    products
+${collUsers}    users
+${collCarts}    carts
+
 
 *** Keywords ***
 
-# ---------------------------------------------------------------------------
-# UTILITAIRES
-# ---------------------------------------------------------------------------
-Setup API Session
-    [Arguments]    ${alias}=api
-    # Crée la session uniquement si elle n’existe pas déjà
-    ${status}=     Run Keyword And Return Status    Get Session    ${alias}
-    Run Keyword If    not ${status}    Create Session    ${alias}    ${BASE_URL}    verify=False
 
 # ---------------------------------------------------------------------------
 # CRUD – UTILISATEUR
 # ---------------------------------------------------------------------------
 Create User
     [Arguments]    ${user_data}
-    Setup API Session
-    ${resp}=       POST On Session    api    /users    json=${user_data}
-    RETURN         ${resp}
+    ${result}=    Evaluate    __import__('pymongo').MongoClient('${DB_HOST}').get_database('${DB_NAME}').get_collection('${collUsers}').insert_one(${user_data})    modules=pymongo
+    Should Not Be Empty    ${result.inserted_id}
+    Log    Résultat insertion: ${result}
+    ${check}=    Evaluate    ${result}.acknowledged
+    Should Be True    ${check}
+    
 
-Get User
+Get User by ID
     [Arguments]    ${user_id}
-    Setup API Session
-    ${resp}=       GET On Session     api    /users/${user_id}
-    RETURN         ${resp}
+    ${user}=    Evaluate
+    ...    __import__('pymongo').MongoClient('${DB_HOST}').get_database('${DB_NAME}').get_collection('${collUsers}').find_one({"id": ${user_id}})
+    ...    modules=pymongo
+    RETURN    ${user}
+
+Get All Users
+    ${users}=    Evaluate
+    ...    list(__import__('pymongo').MongoClient('${DB_HOST}').get_database('${DB_NAME}').get_collection('${collUsers}').find().limit(10))
+    ...    modules=pymongo
+    RETURN    ${users}
+    
+
 
 Update User
     [Arguments]    ${user_id}    ${user_data}
-    Setup API Session
-    ${resp}=       PUT On Session    api    /users/${user_id}    json=${user_data}
-    RETURN         ${resp}
+    ${user}=    Evaluate    __import__('pymongo').MongoClient('${DB_HOST}').get_database('${DB_NAME}').get_collection('${collUsers}').update_one({'_id': __import__('bson').ObjectId('${user_id}')}, {'$set': ${user_data}})     modules=pymongo
+    RETURN    ${user}
+
+
 
 Delete User
-    [Arguments]    ${user_id}
-    Setup API Session
-    ${resp}=       DELETE On Session api    /users/${user_id}
-    RETURN         ${resp}
+    [Arguments]    ${user_id}  
+    ${result}=    Evaluate    __import__('pymongo').MongoClient('${DB_HOST}').get_database('${DB_NAME}').get_collection('${collUsers}').delete_one({"_id": __import__('bson').ObjectId("${user_id}")})  modules=pymongo,bson
+    
+    Log To Console    ${result.deleted_count}  
+    RETURN    ${result}    
+    
+

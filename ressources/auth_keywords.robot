@@ -1,24 +1,38 @@
 *** Settings ***
 Library           RequestsLibrary
-Variables         ../pageobject/variables.py
 Library           Collections
-
-
+Variables         ../pageobject/variables.py
 
 *** Variables ***
-${BASE_URL}             https://fakestoreapi.com
-${LOGIN_ENDPOINT}       /auth/login
-${USERNAME}             mor_2314
-${PASSWORD}             83r5^_
+${DB_NAME}        label1DB
+${collProduct}    products
+${collUsers}      users
+${collCarts}      carts
 
 *** Keywords ***
-Obtenir Token
-    Create Session    fakeapi    ${BASE_URL}
-    ${payload}=    Create Dictionary    username=${USERNAME}    password=${PASSWORD}
-    ${response}=    POST On Session    fakeapi    ${LOGIN_ENDPOINT}    json=${payload}
-    Should Be Equal As Numbers    ${response.status_code}    200
-    Log To Console    ${response.status_code}
-    Log To Console    ${response.content}
-    # ${json}=    ${response.json()}
+Login User
+    [Arguments]    ${credentials}
+    
+    
+    ${user_query}=    Set Variable    {'username': '${credentials['username']}', 'password': '${credentials['password']}'}
+    
+    ${user}=    Evaluate    __import__('pymongo').MongoClient('mongodb+srv://admin:passer123@clusterqatestexamen.ju7prft.mongodb.net').get_database('${DB_NAME}').get_collection('${collUsers}').find_one(${user_query})
+    
+    # Create le resultat du dictionnaire
+    ${result}=    Create Dictionary
+    IF    $user is None
+        Set To Dictionary    ${result}    status=FAILURE
+        Set To Dictionary    ${result}    message=Authentification échouée
+        Set To Dictionary    ${result}    error_code=401
+    ELSE
+        ${token}=    Generate Auth Token    ${credentials['username']}
+        Set To Dictionary    ${result}    status=SUCCESS
+        Set To Dictionary    ${result}    token=${token}
+        Set To Dictionary    ${result}    user=${user}
+    END
+    
+    RETURN    ${result}
 
-    # ${json}=    Evaluate
+Generate Auth Token
+    [Arguments]    ${username}
+    RETURN    mock_token_${username}
