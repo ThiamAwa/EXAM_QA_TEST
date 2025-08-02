@@ -6,10 +6,11 @@ Library           Collections
 
 
 *** Variables ***
-${BASE_URL}             https://fakestoreapi.com
-${LOGIN_ENDPOINT}       /auth/login
-${USERNAME}             mor_2314
-${PASSWORD}             83r5^_
+${DB_HOST}    mongodb+srv://admin:passer123@clusterqatestexamen.ju7prft.mongodb.net/?retryWrites=true&w=majority&appName=ClusterQaTestExamen 
+${DB_NAME}    label1DB
+${collProduct}    products
+${collUsers}    users
+${collCarts}    carts
 
 *** Keywords ***
 Obtenir Token
