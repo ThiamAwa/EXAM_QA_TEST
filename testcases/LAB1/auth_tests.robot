@@ -1,6 +1,6 @@
 *** Settings ***
 Library           Collections
-Variables         ../pageobject/variables.py
+  
 Resource    ../ressources/auth_keywords.robot
 
 *** Test Cases ***

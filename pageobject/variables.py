@@ -6,6 +6,34 @@ collProduct="products"
 collUsers="users"
 collCarts="carts"
 
+URL2="https://automationplayground.com/crm/"
+emailValide = "admin@robotframeworktutorial.com"
+emailNonValide = "admin@robotframework.com"
+password = "pwd"
+BROWSER = "chrome"
+EBAY_URL="https://api.ebay.com/sell/fulfillment/v1"
+
+platform="Android"
+device_name="emulator-5554"
+app_package="sn.sonatel.dsi.moussa.wade.moussawade"
+app_activity=".MainActivity"
+appuim_server="http://localhost:4723"
+
+USERNAME="//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]"
+PASSWORD="//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]"
+loginButton="//android.widget.Button[@content-desc=\"Se connecter\"]"
+ 
+ 	
+
+
+title="//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[1]"
+prix="//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[2]"
+description="//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[3]"
+categorie="//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[4]"
+image="//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText[5]"
+submitButton="//android.widget.Button[@content-desc=\"Ajouter\"]"
+
+
 VALID_USER = {
     "email": "john@gmail.com",
     "username": "johnd",

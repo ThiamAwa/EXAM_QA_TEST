@@ -56,4 +56,3 @@ Delete User
     Log To Console    ${result.deleted_count}  
     RETURN    ${result}    
     
-
