@@ -1,108 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2.2 (Python 3.13.3 on win32)" generated="2025-08-02T01:58:44.029277" rpa="false" schemaversion="5">
+<robot generator="Robot 7.2.2 (Python 3.13.3 on win32)" generated="2025-08-02T09:17:27.925323" rpa="false" schemaversion="5">
 <suite id="s1" name="Ebay Test Cases" source="C:\Users\Pc\EXAM_QA_TEST\testcases\LAB3\ebay_test_cases.robot">
 <kw name="Désactiver Avertissements SSL" owner="ebay_keywords" type="SETUP">
 <kw name="Set Environment Variable" owner="OperatingSystem">
-<msg time="2025-08-02T01:58:45.647284" level="INFO">Environment variable 'PYTHONWARNINGS' set to value 'ignore:Unverified HTTPS request'.</msg>
+<msg time="2025-08-02T09:17:30.663815" level="INFO">Environment variable 'PYTHONWARNINGS' set to value 'ignore:Unverified HTTPS request'.</msg>
 <arg>PYTHONWARNINGS</arg>
 <arg>ignore:Unverified HTTPS request</arg>
 <doc>Sets an environment variable to a specified value.</doc>
-<status status="PASS" start="2025-08-02T01:58:45.647051" elapsed="0.000316"/>
+<status status="PASS" start="2025-08-02T09:17:30.663327" elapsed="0.000658"/>
 </kw>
-<status status="PASS" start="2025-08-02T01:58:45.645866" elapsed="0.001635"/>
+<status status="PASS" start="2025-08-02T09:17:30.661038" elapsed="0.003531"/>
 </kw>
-<test id="s1-t1" name="Get Single Order_Test Non Passant" line="23">
-<kw name="Get Single Order - Test Non Passant" owner="ebay_keywords">
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-08-02T01:58:45.649454" level="INFO">${invalid_order_id} = 123456789INVALID</msg>
-<var>${invalid_order_id}</var>
-<arg>123456789INVALID</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-08-02T01:58:45.649237" elapsed="0.000262"/>
-</kw>
+<test id="s1-t1" name="Afficher Une Commande eBay" line="13">
+<kw name="Get Single Order" owner="ebay_keywords">
 <kw name="Create Ebay Session" owner="ebay_keywords">
 <kw name="Create Session" owner="RequestsLibrary">
-<msg time="2025-08-02T01:58:45.650324" level="INFO">Creating Session using : alias=ebay, url=https://api.sandbox.ebay.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<msg time="2025-08-02T09:17:30.668890" level="INFO">Creating Session using : alias=ebay, url=https://api.sandbox.ebay.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
 <arg>ebay</arg>
 <arg>${base_url_ebay}</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<status status="PASS" start="2025-08-02T01:58:45.650141" elapsed="0.000627"/>
+<status status="PASS" start="2025-08-02T09:17:30.668442" elapsed="0.001262"/>
 </kw>
 <doc>Crée une session HTTP pour eBay avec le token d'autorisation</doc>
-<status status="PASS" start="2025-08-02T01:58:45.649715" elapsed="0.001285"/>
+<status status="PASS" start="2025-08-02T09:17:30.667798" elapsed="0.002176"/>
 </kw>
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-08-02T01:58:45.652101" level="INFO">${headers} = {'Authorization': 'Bearer v^1.1#i^1#r^0#p^3#I^3#f^0#t^H4sIAAAAAAAA/+VYW2wcVxn2+pIoCaGitGlBFdpMSqU2mt0z150ZshvW3t1kndje9axN7FKWMzNn1mPPzgxz8XpdHowpKagXtRIqDxiISAVU3FtcFTUhFg9RSCMoiKovUQlqCRBBiFIJgooCZ9...</msg>
+<msg time="2025-08-02T09:17:30.671145" level="INFO">${headers} = {'Authorization': 'Bearer v^1.1#i^1#r^0#p^3#I^3#f^0#t^H4sIAAAAAAAA/+VYa2wjVxWO89jdaNmNui0tYkuJhrZqace+8/TMsHbXie3GySZ2Yidbu63MnZk79iTjmdl5OHFEUTZ0+xCUVn2BUJECLUit6IPtj5bVlqqIRkDVCqQKISpES1WJh6BVUYX4BX...</msg>
 <var>${headers}</var>
 <arg>Authorization=Bearer ${ACCESS_TOKEN}</arg>
 <arg>Content-Type=application/json</arg>
 <arg>Accept=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-08-02T01:58:45.651307" elapsed="0.000850"/>
+<status status="PASS" start="2025-08-02T09:17:30.670347" elapsed="0.000878"/>
 </kw>
 <kw name="Get Request" owner="RequestsLibrary">
-<msg time="2025-08-02T01:58:45.652388" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
-<msg time="2025-08-02T01:58:46.728670" level="INFO">GET Request : url=https://api.sandbox.ebay.com/sell/fulfillment/v1/order/123456789INVALID 
- path_url=/sell/fulfillment/v1/order/123456789INVALID 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer v^1.1#i^1#r^0#p^3#I^3#f^0#t^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', 'Content-Type': 'application/json'} 
+<msg time="2025-08-02T09:17:30.671643" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2025-08-02T09:17:31.745259" level="INFO">GET Request : url=https://api.sandbox.ebay.com/sell/fulfillment/v1/order/1 
+ path_url=/sell/fulfillment/v1/order/1 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Authorization': 'Bearer v^1.1#i^1#r^0#p^3#I^3#f^0#t^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', 'Content-Type': 'application/json'} 
  body=None 
  </msg>
-<msg time="2025-08-02T01:58:46.729637" level="INFO">GET Response : url=https://api.sandbox.ebay.com/sell/fulfillment/v1/order/123456789INVALID 
+<msg time="2025-08-02T09:17:31.745607" level="INFO">GET Response : url=https://api.sandbox.ebay.com/sell/fulfillment/v1/order/1 
  status=400, reason=Bad Request 
- headers={'rlogid': 't6pithqauq%60fiiw%28ufmadh%7B%3F%3Ctowiugvpd%60jhs.vgiggi%7F.01d73ece%3Ce*ri%7Ecw-1986880c83b-0x2332', 'x-ebay-client-tls-version': 'TLSv1.3', 'x-content-type-options': 'nosniff', 'x-xss-protection': '0', 'cache-control': 'no-cache, no-store, max-age=0, must-revalidate', 'pragma': 'no-cache', 'expires': '0', 'x-frame-options': 'DENY', 'content-type': 'application/json', 'content-length': '188', 'date': 'Sat, 02 Aug 2025 01:58:47 GMT', 'x-envoy-upstream-service-time': '73', 'server': 'ebay-proxy-server', 'strict-transport-security': 'max-age=31536000', 'x-ebay-pop-id': 'UFES2-LVSAZ01-apisandbox'} 
- body={"errors":[{"errorId":32100,"domain":"API_FULFILLMENT","category":"REQUEST","message":"Invalid Order Id: '123456789INVALID'","parameters":[{"name":"orderId","value":"123456789INVALID"}]}]} 
+ headers={'rlogid': 't6pithqauq%60fiiw%28ufmadh%7B%3F%3Ctowiugvpd%60jhs.vgiggi%7F.01d73ece%3Ce*d7v2g-1986a1278a4-0x2353', 'x-ebay-client-tls-version': 'TLSv1.3', 'x-content-type-options': 'nosniff', 'x-xss-protection': '0', 'cache-control': 'no-cache, no-store, max-age=0, must-revalidate', 'pragma': 'no-cache', 'expires': '0', 'x-frame-options': 'DENY', 'content-type': 'application/json', 'content-length': '158', 'date': 'Sat, 02 Aug 2025 09:17:32 GMT', 'x-envoy-upstream-service-time': '48', 'server': 'ebay-proxy-server', 'strict-transport-security': 'max-age=31536000', 'x-ebay-pop-id': 'UFES2-LVSAZ01-apisandbox'} 
+ body={"errors":[{"errorId":32100,"domain":"API_FULFILLMENT","category":"REQUEST","message":"Invalid Order Id: '1'","parameters":[{"name":"orderId","value":"1"}]}]} 
  </msg>
-<msg time="2025-08-02T01:58:46.730133" level="INFO">C:\Users\Pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api.sandbox.ebay.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+<msg time="2025-08-02T09:17:31.745787" level="INFO">C:\Users\Pc\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api.sandbox.ebay.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
   warnings.warn(</msg>
-<msg time="2025-08-02T01:58:46.731745" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<msg time="2025-08-02T09:17:31.770485" level="INFO">${response} = &lt;Response [400]&gt;</msg>
 <var>${response}</var>
 <arg>ebay</arg>
-<arg>/sell/fulfillment/v1/order/${invalid_order_id}</arg>
+<arg>/sell/fulfillment/v1/order/${order_id}</arg>
 <arg>headers=${headers}</arg>
 <doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
-<status status="PASS" start="2025-08-02T01:58:45.652339" elapsed="1.079695"/>
+<status status="PASS" start="2025-08-02T09:17:30.671534" elapsed="1.099091"/>
 </kw>
 <kw name="Log To Console" owner="BuiltIn">
-<arg>${response.status_code}</arg>
+<arg>${response.json()}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-08-02T01:58:46.733106" elapsed="0.005221"/>
+<status status="PASS" start="2025-08-02T09:17:31.771080" elapsed="0.002720"/>
+</kw>
+<msg time="2025-08-02T09:17:31.774214" level="INFO">${order} = None</msg>
+<var>${order}</var>
+<arg>${ORDER_ID}</arg>
+<doc>Récupérer une commande par ID</doc>
+<status status="PASS" start="2025-08-02T09:17:30.666232" elapsed="1.108072"/>
 </kw>
 <kw name="Log To Console" owner="BuiltIn">
-<arg>${response.text}</arg>
+<arg>Détails de la commande: ${order}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-08-02T01:58:46.739206" elapsed="0.003148"/>
+<status status="PASS" start="2025-08-02T09:17:31.775001" elapsed="0.000763"/>
 </kw>
-<kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-08-02T01:58:46.746482" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<msg time="2025-08-02T01:58:46.747085" level="FAIL">L'ID de commande est invalide. Test échoue comme prévu.: 400 != 200</msg>
-<arg>${response.status_code}</arg>
-<arg>200</arg>
-<arg>L'ID de commande est invalide. Test échoue comme prévu.</arg>
-<doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="FAIL" start="2025-08-02T01:58:46.743081" elapsed="0.004982">L'ID de commande est invalide. Test échoue comme prévu.: 400 != 200</status>
-</kw>
-<doc>Ce test échoue exprès avec un ID de commande invalide</doc>
-<status status="FAIL" start="2025-08-02T01:58:45.648734" elapsed="1.099919">L'ID de commande est invalide. Test échoue comme prévu.: 400 != 200</status>
-</kw>
-<tag>ebaynonpassant2</tag>
-<status status="FAIL" start="2025-08-02T01:58:45.647606" elapsed="1.105123">L'ID de commande est invalide. Test échoue comme prévu.: 400 != 200</status>
+<tag>ebay</tag>
+<status status="PASS" start="2025-08-02T09:17:30.664784" elapsed="1.111678"/>
 </test>
-<status status="FAIL" start="2025-08-02T01:58:44.032395" elapsed="2.723901"/>
+<status status="PASS" start="2025-08-02T09:17:27.928920" elapsed="3.849104"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="0" fail="1" skip="0">ebaynonpassant2</stat>
+<stat pass="1" fail="0" skip="0">ebay</stat>
 </tag>
 <suite>
-<stat name="Ebay Test Cases" id="s1" pass="0" fail="1" skip="0">Ebay Test Cases</stat>
+<stat name="Ebay Test Cases" id="s1" pass="1" fail="0" skip="0">Ebay Test Cases</stat>
 </suite>
 </statistics>
 <errors>
-<msg time="2025-08-02T01:58:45.652388" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2025-08-02T09:17:30.671643" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
 </errors>
 </robot>
