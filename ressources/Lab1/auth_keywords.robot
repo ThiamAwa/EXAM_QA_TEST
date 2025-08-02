@@ -1,7 +1,7 @@
 *** Settings ***
 Library           RequestsLibrary
 Library           Collections
-Variables         ../pageobject/variables.py
+Variables         ../../pageobject/variables.py
 
 *** Variables ***
 ${DB_NAME}        label1DB

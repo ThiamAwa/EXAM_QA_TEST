@@ -1,6 +1,6 @@
 *** Settings ***
 Library           Collections
-Variables         ../pageobject/variables.py 
+Variables         ../../pageobject/variables.py 
 Library    RequestsLibrary
 
 *** Variables ***

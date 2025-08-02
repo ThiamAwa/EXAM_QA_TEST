@@ -1,7 +1,7 @@
 
 *** Settings ***
 Library    RequestsLibrary
-Variables  ../pageobject/variables.py
+Variables  ../../pageobject/variables.py
 
 *** Variables ***
 ${DB_HOST}    mongodb+srv://admin:passer123@clusterqatestexamen.ju7prft.mongodb.net/?retryWrites=true&w=majority&appName=ClusterQaTestExamen 

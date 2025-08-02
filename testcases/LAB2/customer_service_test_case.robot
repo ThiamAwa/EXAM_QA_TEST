@@ -40,7 +40,7 @@ Login should fail with missing credential id3
 #     Navigate to LOGIN page adresse
 #     Type Valid login credentials    email=${emailValide}    password=pwd
 #     Select Remenber option
-#     logout
+#     logou
 #     # Click "Login" Link
 
 # Customers page should display multiple customers id5

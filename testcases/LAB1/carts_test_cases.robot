@@ -1,6 +1,6 @@
 *** Settings ***
 Library    SeleniumLibrary
-Resource    ../ressources/carts_keywords.robot
+Resource    ../../ressources/Lab1/products_keywords.robot
 Library    Collections
 
 

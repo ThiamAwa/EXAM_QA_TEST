@@ -1,7 +1,7 @@
 *** Settings ***
 Library           Collections
-Variables         ../pageobject/variables.py
-Resource    ../ressources/auth_keywords.robot
+Variables         ../../pageobject/variables.py
+Resource    ../../ressources/Lab1/user_keywords.robot
 
 *** Test Cases ***
 Connexion Utilisateur Valide

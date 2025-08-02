@@ -1,6 +1,6 @@
 *** Settings ***
 Library    SeleniumLibrary
-Resource    ../ressources/products_keywords.robot
+Resource    ../../ressources/Lab1/products_keywords.robot
 Library    Collections
 
 
@@ -13,8 +13,6 @@ Library    Collections
 #                         CRUD PRODUCT PASS 
 
 CAS_TEST_1 Add Product pass
-    [Tags]    smoke
-
     ${rate}=    Evaluate    4.2
     ${count}=    Evaluate    10
 
@@ -38,16 +36,13 @@ CAS_TEST_1 Add Product pass
     Log To Console    ${data}
     
 CAS_TEST_2 Read Product by id pass
-    [Tags]    smoke1
     Read Product by id    4
 
 CAS_TEST_3 Read All Product
-    [Tags]    smoke2
     Read All Product
        
 
 CAS_TEST_4 Update Product by id pass
-    [Tags]    smoke3
     ${rate}=    Evaluate    4.2
     ${count}=    Evaluate    10
 
@@ -73,7 +68,6 @@ CAS_TEST_4 Update Product by id pass
     Log To Console    ${product}
   
 CAS_TEST_5 Delete Product
-    [Tags]    smoke4
     ${id}=    Set Variable    68897faa18361570b35b46bd
     ${id_obj}=    Evaluate    __import__('bson').ObjectId("${id}")
     ${reponse}=    Delete Product    ${id_obj}
@@ -82,8 +76,6 @@ CAS_TEST_5 Delete Product
 
 #                         CRUD PRODUCT Not Pass
 CAS_TEST_1 Avec attribut manquant Add Product Error
-    [Tags]    smokeNP
-
     ${rate}=    Evaluate    4.2
     ${count}=    Evaluate    10
 
@@ -107,8 +99,6 @@ CAS_TEST_1 Avec attribut manquant Add Product Error
 
 
 CAS_TEST_1 Avec price en string add Product Error
-    [Tags]    smokeNP2
-
     ${rate}=    Evaluate    4.2
     ${count}=    Evaluate    10
 
@@ -132,7 +122,6 @@ CAS_TEST_1 Avec price en string add Product Error
     Log To Console    ${data}    
 
 CAS_TEST_4_NP Update Product avec un champ manquant Error
-    [Tags]    smokeNP3
     ${rate}=    Evaluate    4.2
     ${count}=    Evaluate    10
 
@@ -156,7 +145,6 @@ CAS_TEST_4_NP Update Product avec un champ manquant Error
     Log To Console    ${product}
 
 CAS_TEST_4_NP Update Product avec un type incorrect Error
-    [Tags]    smokeNP33
     ${rate}=    Evaluate    4.2
     ${count}=    Evaluate    10
 
@@ -181,14 +169,14 @@ CAS_TEST_4_NP Update Product avec un type incorrect Error
     Log To Console    ${product}
 
 CAS_TEST_5_NP Delete Product With Invalid Id
-    [Tags]    smokeNP4
+
     ${invalid_id}=    Set Variable    000000000000000000000000
     ${id_obj}=    Evaluate    __import__('bson').ObjectId("${invalid_id}")
     ${reponse}=    Delete Product    ${id_obj}
     Log To Console    ${reponse}
 
 CAS_TEST_2_NP Read Product by Invalid Id
-    [Tags]    smokeNP5
+ 
     ${invalid_id}=    Set Variable    000000000000000000000000
     ${id_obj}=    Evaluate    __import__('bson').ObjectId("${invalid_id}")
     ${reponse}=    Read Product by id    ${id_obj}
@@ -196,7 +184,6 @@ CAS_TEST_2_NP Read Product by Invalid Id
 
 
 CAS_TEST_3_NP Read All Products On Empty Collection
-    [Tags]    smokeNP6
     ${reponse}=    Read All Product
     Log To Console    ${reponse}
     Length Should Be    ${reponse}    0

@@ -1,5 +1,6 @@
 *** Settings ***
-Resource    ../ressources/user_keywords.robot
+Resource    ../../ressources/Lab1/auth_keywords.robot
+
 Library     Collections
 Library           RequestsLibrary
 
