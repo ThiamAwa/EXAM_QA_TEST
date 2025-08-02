@@ -26,17 +26,11 @@ ${collCarts}    carts
 
 
 
-#                         CRUD PRODUCT     
-# Add Product
-#     [Arguments]    ${product_data}
-#     Evaluate    ${collectionProduct}.insert_one(${product_data})
-
 Add Product
     [Arguments]    ${product_data}
     Evaluate    __import__('pymongo').MongoClient('${DB_HOST}').get_database('${DB_NAME}').get_collection('${collProduct}').insert_one(${product_data})    modules=pymongo
 
     
-
 Read Product By Id
     [Arguments]    ${product_id}
     ${product_id_int}=    Evaluate    int(${product_id})

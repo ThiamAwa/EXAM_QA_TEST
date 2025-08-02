@@ -1,7 +1,8 @@
 *** Settings ***
 Library           Collections
 Variables         ../../pageobject/variables.py
-Resource    ../../ressources/Lab1/user_keywords.robot
+Resource    ../../ressources/Lab1/auth_keywords.robot
+
 
 *** Test Cases ***
 Connexion Utilisateur Valide
@@ -9,9 +10,7 @@ Connexion Utilisateur Valide
     ${credentials}=    Create Dictionary
     ...    username    johndoe
     ...    password    secret123
-    
     ${response}=    Login User    ${credentials}
-    
     # Vérifications (notation point recommandée)
     Should Be Equal As Strings    ${response.status}    SUCCESS
     Dictionary Should Contain Key    ${response}    token
