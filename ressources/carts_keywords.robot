@@ -2,49 +2,39 @@
 *** Settings ***
 Library    RequestsLibrary
 Variables  ../pageobject/variables.py
-Library    ../MongoLibrary.py    ${DB_HOST}    ${DB_NAME}    ${collProduct}  
+
+*** Variables ***
+${DB_HOST}    mongodb+srv://admin:passer123@clusterqatestexamen.ju7prft.mongodb.net/?retryWrites=true&w=majority&appName=ClusterQaTestExamen 
+${DB_NAME}    label1DB
+${collProduct}    products
+${collUsers}    users
+${collCarts}    carts
 
 
 *** Keywords ***
-Connect To MongoDB
-    ${client}=    Evaluate    __import__('pymongo').MongoClient("${DB_HOST}")    modules=pymongo
-    Set Suite Variable    ${client}
-    ${db}=    Evaluate    ${client}.get_database("${DB_NAME}")
-    Set Suite Variable    ${db}
-    ${collectionProduct}=    Evaluate    ${db}.get_collection("${collProduct}")
-    ${collectionUsers}=     Evaluate    ${db}.get_collection("${collUsers}")
-    ${collectionCart}=      Evaluate    ${db}.get_collection("${collCarts}")
-
-    Set Suite Variable    ${collectionProduct}
-    Set Suite Variable    ${collectionUsers}
-    Set Suite Variable    ${collectionCart}
-
 
 Add Cart
     [Arguments]    ${carts_data}
-    ${response}=    POST On Session    fakestore    /carts    json=${carts_data}
-    Should Be Equal As Strings    ${response.status_code}    200
-    RETURN    ${response.json()}
+    ${cart}=    Evaluate    __import__('pymongo').MongoClient('${DB_HOST}').get_database('${DB_NAME}').get_collection('${collCarts}').insert_one(${carts_data})    modules=pymongo
+    Log To Console    ${cart.inserted_id}
 
 Read Cart by id  
     [Arguments]    ${carts_id}
-    ${response}=    GET On Session    fakestore    /carts/${carts_id}
-     Should Be Equal As Strings    ${response.status_code}    200
-    RETURN    ${response.json()}
+    ${carts_id_int}=    Evaluate    int(${carts_id})
+    ${cart}=    Evaluate    __import__('pymongo').MongoClient('${DB_HOST}').get_database('${DB_NAME}').get_collection('${collCarts}').find_one({"id": ${carts_id_int}})    modules=pymongo
+    Log To Console    ${cart}
 
 Read All Cart
-    ${response}=    GET On Session       fakestore    /carts
-    Should Be Equal As Strings    ${response.status_code}    200
-    RETURN    ${response.json()}   
+    ${carts}=    Evaluate    list(__import__('pymongo').MongoClient('${DB_HOST}').get_database('${DB_NAME}').get_collection('${collCarts}').find())    modules=pymongo
+    Log To Console    ${carts}  
 
 Update Cart
-    [Arguments]    ${carts_id}    ${carts}    
-    ${response}=    PUT On Session    fakestore    /carts/${carts_id}    json=${carts}
-    Should Be Equal As Strings    ${response.status_code}    200
-    RETURN    ${response.json()}
+    [Arguments]    ${carts_id}    ${carts_data}
+    ${result}=    Evaluate    __import__('pymongo').MongoClient('${DB_HOST}').get_database('${DB_NAME}').get_collection('${collCarts}').update_one({'_id': __import__('bson').ObjectId('${carts_id}')}, {'$set': ${carts_data}})    modules=pymongo,bson
+    Log To Console    ${result.modified_count}
  
 Delete Cart
     [Arguments]    ${carts_id}
-    ${response}=    DELETE On Session    fakestore    /carts/${carts_id}
-    Should Be Equal As Strings    ${response.status_code}    200
-    RETURN    ${response.json()}       
+    ${ObjectId}=    Evaluate    __import__('bson').ObjectId('${carts_id}')    modules=bson
+    ${result}=    Evaluate    __import__('pymongo').MongoClient('${DB_HOST}').get_database('${DB_NAME}').get_collection('${collCarts}').delete_one({'_id': __import__('bson').ObjectId('${carts_id}')})    modules=pymongo,bson
+    Log To Console    ${result.deleted_count}      
